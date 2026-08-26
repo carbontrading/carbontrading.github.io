@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="碳市场分析平台产品说明：CEA/CCER 双市场行情、六大算法智能预测、多模型融合策略推荐的 Windows 桌面工具。">
+<title>碳市场分析平台 · 产品说明</title>
+<style>
+:root{
+  --bg:#0A111F;--bg-2:#0E1830;--bg-3:#15223E;
+  --line:rgba(148,163,184,.16);--line-strong:rgba(52,211,153,.28);
+  --text:#E6EDF7;--muted:#8A9AB5;--muted-2:#5E7391;
+  --green:#10B981;--green-2:#34D399;--green-soft:rgba(16,185,129,.12);
+  --radius:14px;--radius-sm:10px;
+  --font:"PingFang SC","Microsoft YaHei","Segoe UI",system-ui,-apple-system,sans-serif;
+  --mono:ui-monospace,"SF Mono",Consolas,"Courier New",monospace;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--bg);color:var(--text);font:400 15px/1.75 var(--font);-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:1000px;margin:0 auto;padding:0 24px}
+nav{position:sticky;top:0;z-index:50;backdrop-filter:blur(12px);background:rgba(10,17,31,.72);border-bottom:1px solid var(--line)}
+.nav-in{display:flex;align-items:center;justify-content:space-between;height:60px}
+.brand{display:flex;align-items:center;gap:10px;font-weight:600;font-size:16px}
+.logo{width:30px;height:30px;border-radius:9px;background:linear-gradient(135deg,var(--green),#0E9F6E);display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:700;color:#fff;box-shadow:0 0 18px rgba(16,185,129,.35)}
+.brand small{color:var(--muted);font-weight:400;font-size:12px}
+.nav-links{display:flex;gap:26px;font-size:14px;color:var(--muted)}
+.nav-links a:hover{color:var(--green-2)}
+.nav-cta{padding:8px 16px;border-radius:999px;background:var(--green);color:#04110B;font-weight:600;font-size:13px;transition:filter .15s}
+.nav-cta:hover{filter:brightness(1.12)}
+/* hero */
+.hero{position:relative;overflow:hidden;border-bottom:1px solid var(--line);background:radial-gradient(720px 320px at 85% 10%,rgba(16,185,129,.14),transparent 62%),var(--bg)}
+.hero .wrap{padding:60px 24px 56px;text-align:center}
+.h-tag{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--line-strong);background:var(--green-soft);color:var(--green-2);font-size:12px;border-radius:999px;padding:5px 14px}
+h1{font-size:36px;line-height:1.25;font-weight:700;margin:18px 0 12px;letter-spacing:.5px}
+h1 .g{background:linear-gradient(90deg,var(--green-2),#7DD9A8);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero p{color:var(--muted);font-size:15px;max-width:640px;margin:0 auto}
+.hero .btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:28px}
+.btn-dl{display:inline-flex;align-items:center;gap:9px;background:linear-gradient(135deg,var(--green),#0E9F6E);color:#04110B;font-size:16px;font-weight:700;padding:14px 30px;border-radius:12px;box-shadow:0 8px 26px rgba(16,185,129,.32);transition:transform .15s}
+.btn-dl:hover{transform:translateY(-2px)}
+.btn-ghost{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--line-strong);color:var(--green-2);font-size:14px;font-weight:600;padding:13px 24px;border-radius:12px;background:rgba(16,185,129,.06);transition:background .2s}
+.btn-ghost:hover{background:rgba(16,185,129,.14)}
+/* section */
+section{padding:58px 0;border-bottom:1px solid var(--line)}
+.sec-h{font-size:24px;font-weight:700;text-align:center;letter-spacing:.5px}
+.sec-sub{color:var(--muted);text-align:center;font-size:14px;margin:8px 0 34px}
+/* 市场背景数据条 */
+.mkt{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.mk{border:1px solid var(--line);border-radius:var(--radius);background:var(--bg-2);padding:22px 16px;text-align:center}
+.mk b{display:block;font-size:26px;font-weight:700;color:var(--green-2);font-family:var(--mono)}
+.mk span{font-size:12.5px;color:var(--muted);line-height:1.5}
+/* 功能卡片 */
+.feat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.feat{border:1px solid var(--line);border-radius:var(--radius);background:var(--bg-2);padding:24px 20px;transition:border-color .2s,transform .2s}
+.feat:hover{border-color:var(--line-strong);transform:translateY(-3px)}
+.feat .ic{width:40px;height:40px;border-radius:11px;background:var(--green-soft);color:var(--green-2);display:flex;align-items:center;justify-content:center;margin-bottom:14px}
+.feat h3{font-size:16px;font-weight:600;margin-bottom:8px}
+.feat p{font-size:13px;color:var(--muted);line-height:1.7}
+/* 预测能力表 */
+.perf{border:1px solid var(--line);border-radius:var(--radius);overflow:hidden}
+.perf table{width:100%;border-collapse:collapse;font-size:13.5px}
+.perf th{padding:13px 16px;text-align:left;background:var(--bg-3);color:var(--muted);font-weight:500;font-size:12.5px}
+.perf td{padding:13px 16px;border-top:1px solid var(--line);color:var(--text)}
+.perf td.muted{color:var(--muted)}
+.perf td.hl{color:var(--green-2);font-family:var(--mono);font-weight:600}
+.perf-note{margin-top:14px;font-size:12px;color:var(--muted-2);line-height:1.6}
+/* 安全特性 */
+.sec-list{display:flex;flex-direction:column;gap:12px;max-width:720px;margin:0 auto}
+.sec-item{display:flex;gap:14px;border:1px solid var(--line);border-radius:var(--radius-sm);background:var(--bg-2);padding:16px 18px}
+.sec-item .ic{width:36px;height:36px;border-radius:10px;background:var(--green-soft);color:var(--green-2);display:flex;align-items:center;justify-content:center;flex:none}
+.sec-item h4{font-size:14.5px;font-weight:600;margin-bottom:3px}
+.sec-item p{font-size:12.5px;color:var(--muted);line-height:1.6}
+/* 购买流程 */
+.flow{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.fl{border:1px solid var(--line);border-radius:var(--radius);background:var(--bg-2);padding:20px 16px;position:relative;text-align:center}
+.fl .no{width:26px;height:26px;border-radius:50%;background:var(--green);color:#04110B;font-weight:700;font-size:13px;display:flex;align-items:center;justify-content:center;margin:0 auto 10px}
+.fl h4{font-size:14px;font-weight:600;margin-bottom:6px}
+.fl p{font-size:12px;color:var(--muted);line-height:1.6}
+.flow-arrow{position:absolute;right:-10px;top:50%;transform:translateY(-50%);color:var(--green-2);font-weight:700;z-index:2}
+/* 页脚 */
+footer{padding:28px 0 40px;font-size:12.5px;color:var(--muted)}
+.foot-in{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px}
+.foot-in b{color:var(--text);font-weight:600}
+/* 响应式 */
+@media (max-width:900px){
+  .feat-grid{grid-template-columns:1fr 1fr}
+  .mkt{grid-template-columns:1fr 1fr}
+  .flow{grid-template-columns:1fr 1fr}
+  .nav-links{display:none}
+  h1{font-size:28px}
+}
+@media (max-width:560px){
+  .feat-grid{grid-template-columns:1fr}
+  .flow{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap nav-in">
+    <a class="brand" href="index.html"><span class="logo">碳</span>碳市场分析平台<small>产品说明</small></a>
+    <div class="nav-links">
+      <a href="index.html">返回下载页</a>
+      <a href="index.html#features">功能</a>
+      <a href="index.html#pricing">版本与价格</a>
+    </div>
+    <a class="nav-cta" href="index.html#top">⬇ 立即下载</a>
+  </div>
+</nav>
+
+<!-- Hero -->
+<header class="hero">
+  <div class="wrap">
+    <span class="h-tag">Windows 桌面工具 · 数据自动更新 · 本地加密存储</span>
+    <h1>让碳价研判<br>快人一步</h1>
+    <p>碳市场分析平台是面向碳资产管理从业者的专业行情与研判工具，覆盖 CEA 全国碳排放配额与 CCER 自愿减排双市场，以六大算法智能预测、多模型融合推荐，辅助把握碳价走势与交易窗口。</p>
+    <div class="btns">
+      <a class="btn-dl" href="index.html#top">⬇ 免费下载 v5.3</a>
+      <a class="btn-ghost" href="#buy">查看购买流程</a>
+    </div>
+  </div>
+</header>
+
+<!-- 市场背景 -->
+<section>
+  <div class="wrap">
+    <div class="sec-h">为什么需要碳价研判工具</div>
+    <div class="sec-sub">碳市场正在快速扩容，履约与交易需求同步上升（2025 年官方数据）</div>
+    <div class="mkt">
+      <div class="mk"><b>3378</b><span>重点排放单位纳入全国碳市场（电力+钢铁+水泥+铝）</span></div>
+      <div class="mk"><b>2000+</b><span>2025 年实际参与交易的企业，首次突破</span></div>
+      <div class="mk"><b>146亿</b><span>2025 年 CEA 全年成交额（元），同比增长 24%</span></div>
+      <div class="mk"><b>8000+</b><span>下一轮扩围（石化/化工/造纸/民航）后的覆盖企业</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- 核心功能 -->
+<section id="features">
+  <div class="wrap">
+    <div class="sec-h">核心功能</div>
+    <div class="sec-sub">从行情采集到智能研判，一站完成</div>
+    <div class="feat-grid">
+      <div class="feat">
+        <div class="ic">📈</div>
+        <h3>双市场行情看板</h3>
+        <p>CEA 全国碳配额 + CCER 自愿减排双市场，量价同框展示，收盘价、成交量一手掌握。</p>
+      </div>
+      <div class="feat">
+        <div class="ic">🧮</div>
+        <h3>六大算法预测</h3>
+        <p>线性回归 / Holt-Winters / 季节性回归 / ARIMA / GRU / ECLAG 六种模型，自动择优，适配不同行情阶段。</p>
+      </div>
+      <div class="feat">
+        <div class="ic">🔗</div>
+        <h3>多模型融合推荐</h3>
+        <p>五种模型按历史误差加权融合生成次日预测，并给出方向一致率，让策略更有依据。</p>
+      </div>
+      <div class="feat">
+        <div class="ic">⏰</div>
+        <h3>履约智提醒</h3>
+        <p>履约冲刺期信号增强、CCER 价差软约束标注，帮助把握履约窗口与资产处置时机。</p>
+      </div>
+      <div class="feat">
+        <div class="ic">🔄</div>
+        <h3>数据自动更新</h3>
+        <p>交易日行情自动入库，收盘即最新，无需手工维护，打开即用。</p>
+      </div>
+      <div class="feat">
+        <div class="ic">🔒</div>
+        <h3>本地加密存储</h3>
+        <p>数据全部存储在本机，AES-256 加密保护，隐私不上云，访问需密码认证。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 预测能力 -->
+<section>
+  <div class="wrap">
+    <div class="sec-h">预测能力有多准</div>
+    <div class="sec-sub">样本外滚动回归测试结果（内部数据，仅供参考）</div>
+    <div class="perf">
+      <table>
+        <tr><th>市场</th><th>推荐模型</th><th>1 步预测误差</th><th>多步预测误差</th><th>说明</th></tr>
+        <tr><td>CEA</td><td>auto 自动择优</td><td class="hl">≈ 0.2%</td><td class="hl">≈ 1.6%</td><td class="muted">自动避开趋势突变期的线性模型</td></tr>
+        <tr><td>CEA</td><td>seasonal 季节性回归</td><td class="hl">≈ 0.2%</td><td class="muted">—</td><td class="muted">近期最稳的单模型</td></tr>
+        <tr><td>CCER</td><td>auto 自动择优</td><td class="hl">≈ 2.3%</td><td class="muted">—</td><td class="muted">CCER 波动大于 CEA，预测难度更高</td></tr>
+      </table>
+    </div>
+    <p class="perf-note">误差以 MAPE（平均绝对百分比误差）衡量，数据来自平台每周进行的样本外滚动回归。碳价短期存在随机波动，预测工具定位为"辅助研判"，不构成交易或投资建议。</p>
+  </div>
+</section>
+
+<!-- 数据与安全 -->
+<section>
+  <div class="wrap">
+    <div class="sec-h">数据与安全</div>
+    <div class="sec-sub">行情取自已公开的官方交易信息，数据存本地、授权绑机器</div>
+    <div class="sec-list">
+      <div class="sec-item">
+        <div class="ic">🗄️</div>
+        <div><h4>行情来源</h4><p>CEA / CCER 行情信息来源于交易所公开发布的交易数据，经平台自动整理入库。</p></div>
+      </div>
+      <div class="sec-item">
+        <div class="ic">🔐</div>
+        <div><h4>本地加密</h4><p>数据库整库 AES-256 加密，密钥绑定本机，退出自动加密回写；文件被拷贝到其他电脑也无法解密读取。</p></div>
+      </div>
+      <div class="sec-item">
+        <div class="ic">🔑</div>
+        <div><h4>访问控制</h4><p>首次启动自设访问密码，每次启动需重新登录，退出即失效，保护本机数据。</p></div>
+      </div>
+      <div class="sec-item">
+        <div class="ic">🖥️</div>
+        <div><h4>授权绑定</h4><p>激活码绑定机器指纹，一台机器一份授权，防止软件被随意复制传播。</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 购买流程 -->
+<section id="buy">
+  <div class="wrap">
+    <div class="sec-h">购买流程</div>
+    <div class="sec-sub">安装免费版 → 获取专业版激活码，三步解锁全部功能</div>
+    <div class="flow">
+      <div class="fl">
+        <span class="no">1</span>
+        <h4>下载安装</h4>
+        <p>从下载页下载安装包，按提示完成安装，首次启动设置访问密码。</p>
+      </div>
+      <div class="fl">
+        <span class="no">2</span>
+        <h4>提供机器码</h4>
+        <p>打开软件"关于/授权"页面，将显示的机器码发送给开发者。</p>
+      </div>
+      <div class="fl">
+        <span class="no">3</span>
+        <h4>获取激活码</h4>
+        <p>开发者核对后生成专属激活码发回，输入即可解锁专业版全部功能。</p>
+      </div>
+      <div class="fl">
+        <span class="no">4</span>
+        <h4>续期与更新</h4>
+        <p>专业版按年订阅，到期前可续期；软件持续迭代，新版免费更新。</p>
+      </div>
+    </div>
+    <p class="perf-note" style="text-align:center;margin-top:18px">专业版价格：598 元 / 年 · 版本与价格详见 <a href="index.html#pricing" style="color:var(--green-2);text-decoration:underline">下载页的版本对比</a></p>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap foot-in">
+    <span><b>碳市场分析平台</b> · 当前版本 v5.3</span>
+    <span>© 2026 · 数据仅供参考，不构成投资建议</span>
+  </div>
+</footer>
+
+</body>
+</html>
