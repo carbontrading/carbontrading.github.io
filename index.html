@@ -386,13 +386,13 @@ footer{border-top:1px solid var(--line);padding:28px 0 40px;font-size:12.5px;col
 <!-- 版本对比 -->
 <section id="pricing">
   <div class="wrap">
-    <div class="sec-h">免费版 vs 专业版</div>
-    <div class="sec-sub">先免费试用，需要更专业的研判能力再升级</div>
+    <div class="sec-h">普通版 vs 专业版</div>
+    <div class="sec-sub">先下载体验，需要更专业的研判能力再升级</div>
     <div class="cmp">
       <div class="cmp-row cmp-head">
         <div class="cmp-feat">功能</div>
-        <div class="cmp-free">免费版<div class="cmp-price">0 元 · 永久</div></div>
-        <div class="cmp-pro">专业版<span class="cmp-badge">推荐</span><div class="cmp-price">598 元 / 年</div></div>
+        <div class="cmp-free">普通版<div class="cmp-price">价格待定</div></div>
+        <div class="cmp-pro">专业版<span class="cmp-badge">推荐</span><div class="cmp-price">价格待定</div></div>
       </div>
       <div class="cmp-row">
         <div class="cmp-feat">CEA + CCER 双市场行情看板</div>
@@ -435,9 +435,9 @@ footer{border-top:1px solid var(--line);padding:28px 0 40px;font-size:12.5px;col
         <div class="cmp-pro"><span class="cmp-yes">✓</span></div>
       </div>
       <div class="cmp-row cmp-cta-row">
-        <a class="cmp-btn" href="https://github.com/carbontrading/carbontrading.github.io/releases/download/v9.2/CarbonPlatform_Setup_9.2.exe">⬇ 下载免费版</a>
+        <a class="cmp-btn" href="https://github.com/carbontrading/carbontrading.github.io/releases/download/v9.2/CarbonPlatform_Setup_9.2.exe">⬇ 下载普通版</a>
         <a class="cmp-btn solid" href="https://github.com/carbontrading/carbontrading.github.io/releases/download/v9.2/CarbonPlatform_Setup_9.2.exe">⬇ 下载后激活专业版</a>
-        <div class="cmp-tip">专业版激活码即将开放，安装后按提示获取授权即可解锁全部功能</div>
+        <div class="cmp-tip">激活码即将开放，安装后按提示获取授权即可解锁相应功能</div>
       </div>
     </div>
     <div class="cmp-note">两种版本使用同一个安装包，激活码决定功能范围 · 数据均存储在本机，加密保护</div>
@@ -446,22 +446,22 @@ footer{border-top:1px solid var(--line);padding:28px 0 40px;font-size:12.5px;col
 <section id="versions">
   <div class="wrap">
     <div class="sec-h">更新与下载</div>
-    <div class="sec-sub">当前版本与上一版本，供回退使用</div>
+    <div class="sec-sub">最新正式版，安装即用</div>
     <div class="ver-wrap">
       <div class="ver-card">
-        <h3><span class="v-tag">v8.0</span> 本次更新</h3>
+        <h3><span class="v-tag">v9.2</span> 本次更新</h3>
         <ul>
           <li>
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
-            <div>算法引擎重大升级：<span>多模型融合（季节性×梯度提升）多步误差较单一最优模型降约22%，方向准确率提升42个百分点</span></div>
+            <div>数据稳定性根治：<span>修复极端情况下行情数据库被异常清空的问题，行情与交易数据长期稳定、不丢失</span></div>
           </li>
           <li>
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
-            <div>深度序列实验模型：<span>轻量自注意力深度模型，供研究对照（如实标注精度）</span></div>
+            <div>访问安全回归：<span>访问密码登录、退出平台、修改密码、手机局域网访问四大功能完整回归，使用更安心</span></div>
           </li>
           <li>
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
-            <div>外部因子框架：<span>配额缺口/已签发CCER/抵消比例接入预测特征（专业版专属）</span></div>
+            <div>核心算法加固：<span>六大预测算法与策略推荐引擎升级为机器码级保护，防逆向防破解，持续稳定迭代</span></div>
           </li>
         </ul>
         <p class="hint">安装前建议关闭旧版本平台，安装过程如提示覆盖即可。</p>
@@ -490,8 +490,7 @@ footer{border-top:1px solid var(--line);padding:28px 0 40px;font-size:12.5px;col
    latest   : 是否最新版（第一项建议为 true）
    ============================================================ */
 var VERSIONS = [
-  { v:"9.2", file:"https://github.com/carbontrading/carbontrading.github.io/releases/download/v9.2/CarbonPlatform_Setup_9.2.exe", note:"最新正式版", size:"145 MB", latest:true },
-  { v:"8.0", file:"downloads/CarbonPlatform_Setup_8.0.exe", note:"历史版本 · 算法引擎重大升级 · 多模型融合", size:"150 MB" }
+  { v:"9.2", file:"https://github.com/carbontrading/carbontrading.github.io/releases/download/v9.2/CarbonPlatform_Setup_9.2.exe", note:"最新正式版", size:"145 MB", latest:true }
 ];
 
 /* Mac 版配置：准备好 Mac 版安装包后，填上 file 文件名即可启用下载 */
