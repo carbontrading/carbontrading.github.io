@@ -1,12 +1,13 @@
 {
-  "latest_version": "1.0-trial",
-  "release_date": "2026-08-31",
+  "latest_version": "10.0",
+  "latest_label": "1.0.1-trial",
+  "release_date": "2026-09-01",
   "notes": [
-    "全新内测版本 V1.0-trial：试用期 30 天，到期需激活（普通版/专业版激活码）",
-    "新增交易偏好「每批间隔天数」：企业可自定义履约分批节奏（7~120 天），策略页与报告页批次联动一致",
-    "版本推送接通：左下角检测到新版本会提示下载更新（覆盖安装，数据不丢）",
+    "内测修复版 v1.0.1-trial：修复安装后无历史行情的问题，内置官方历史真实数据，首次打开即可用，无需长时间等待",
+    "修复旧版用户收不到版本推送提示的问题（本次公告即新版本，老用户请点击更新）",
+    "试用期 30 天，到期需激活（普通版/专业版激活码）",
     "正式版版本号待内测稳定后另行定义"
   ],
-  "download_url": "https://github.com/carbontrading/carbontrading.github.io/releases/download/v1.0-trial/CarbonPlatform_Setup_1.0-trial.exe",
-  "sha256": "2578579D59858D8F4FBEA75F1252375DF9D724736D041F8D9387AFF508B892DC"
+  "download_url": "https://carbontrading-1442764409.cos.ap-guangzhou.myqcloud.com/CarbonPlatform_Setup_1.0.1-trial.exe",
+  "sha256": "0DD441A5D6B95A29A59BF6277EBA7047837B209B5F0B1BA95AF2DC57F5998041"
 }
