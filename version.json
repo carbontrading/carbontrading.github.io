@@ -1,13 +1,13 @@
 {
   "latest_version": "10.0",
-  "latest_label": "1.0.1-trial",
-  "release_date": "2026-09-01",
+  "latest_label": "1.0.2-trial",
+  "release_date": "2026-09-05",
   "notes": [
-    "内测修复版 v1.0.1-trial：修复安装后无历史行情的问题，内置官方历史真实数据，首次打开即可用，无需长时间等待",
-    "修复旧版用户收不到版本推送提示的问题（本次公告即新版本，老用户请点击更新）",
-    "试用期 30 天，到期需激活（普通版/专业版激活码）",
-    "正式版版本号待内测稳定后另行定义"
+    "内测版 v1.0.2-trial：启动自愈加固——修复个别电脑升级后打不开/无反应的问题，坏数据自动修复、无需重装、数据不丢",
+    "安装即内置官方历史行情（CEA 2021-07 至今 / CCER 2025-03 至今），首次打开即可用",
+    "9.x 及更早旧版用户打开软件会收到更新提示，覆盖安装即可（数据不丢）",
+    "试用期 30 天，到期需激活（普通版/专业版激活码）；正式版版本号待内测稳定后另行定义"
   ],
-  "download_url": "https://carbontrading-1442764409.cos.ap-guangzhou.myqcloud.com/CarbonPlatform_Setup_1.0.1-trial.exe",
-  "sha256": "0DD441A5D6B95A29A59BF6277EBA7047837B209B5F0B1BA95AF2DC57F5998041"
+  "download_url": "https://carbontrading-1442764409.cos.ap-guangzhou.myqcloud.com/CarbonPlatform_Setup_1.0.2-trial.exe",
+  "sha256": "87B4DDEAA2CB5D54C2D5152FAF9B97AB403BA7F9D3E1BD6D419DB08EFBABF503"
 }
