@@ -1,14 +1,14 @@
 {
   "latest_version": "10.0",
-  "latest_label": "1.0.3-trial",
+  "latest_label": "1.0.4-trial",
   "release_date": "2026-09-05",
   "notes": [
-    "内测版 v1.0.3-trial：数据分析与算法引擎栏目秒级响应，智能择优/多模型融合/14日/30日等不再有长等待；预测结果与上一版一致",
-    "界面更简洁：多模型融合下方不再显示“主要驱动因子”栏",
+    "内测版 v1.0.4-trial：行情自动更新更稳——CEA 与 CCER 各自独立更新、互不拖累，某一路数据源临时受限时只等这一路，另一路照常拉取，不再整轮卡住",
+    "更新探测更智能：改用完整浏览器请求头，避免被官网风控误判为机器人而整轮跳过；行情日/节假日数据照常入库",
+    "登录前的欢迎页不再展示后台文件提示等内部信息，只保留「暂无行情数据」，更干净更安全",
     "安装即内置官方历史行情（CEA 2021-07 至今 / CCER 2025-03 至今），首次打开即可用",
-    "v1.0.2-trial 及更早旧版用户打开软件会收到更新提示，覆盖安装即可（数据不丢）",
-    "试用期 30 天，到期需激活（普通版/专业版激活码）；正式版版本号待内测稳定后另行定义"
+    "v1.0.3-trial 及更早旧版用户打开软件会收到更新提示，覆盖安装即可（数据不丢）；试用期 30 天，到期需激活（普通版/专业版激活码）"
   ],
-  "download_url": "https://carbontrading-1442764409.cos.ap-guangzhou.myqcloud.com/CarbonPlatform_Setup_1.0.3-trial.exe",
-  "sha256": "EF269B23F9A62F88767792EBC4B42FB27F1F8084784A59F545511BDFA8B78334"
+  "download_url": "https://carbontrading-1442764409.cos.ap-guangzhou.myqcloud.com/CarbonPlatform_Setup_1.0.4-trial.exe",
+  "sha256": "1D2A9ECA0DD88D3C1B897261C20BB20BFAEAB3936A063EA0F27A95A688340DB4"
 }
