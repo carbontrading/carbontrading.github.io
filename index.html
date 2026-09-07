@@ -259,6 +259,15 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--green-2);outline-of
   .os-foot{flex-direction:column;align-items:flex-start}
   .sell .s b{font-size:13.5px}
 }
+/* 更新与下载 · macOS 版本卡 */
+.ver-card.mac-card{margin-top:16px;border-color:rgba(148,163,184,.32);background:linear-gradient(180deg,rgba(18,30,54,.92),rgba(10,16,28,.85))}
+.ver-card.mac-card .v-tag{background:rgba(148,163,184,.22);color:var(--text)}
+.mac-card .mac-links{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}
+.mac-card .mac-links .cmp-btn{font-size:13px;padding:9px 14px;border-radius:10px}
+@media (max-width:560px){
+  .mac-card .mac-links{flex-direction:column}
+  .mac-card .mac-links .cmp-btn{justify-content:center}
+}
 </style>
 </head>
 <body>
@@ -270,7 +279,7 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--green-2);outline-of
     <div class="nav-links">
       <a href="#top">首页</a>
       <a href="#features">功能</a>
-      <a href="#versions">版本</a>
+      <a href="#update">下载</a>
       <a href="#contact">联系我们</a>
     </div>
     <a class="nav-cta" href="https://carbontrading-1442764409.cos.ap-guangzhou.myqcloud.com/CarbonPlatform_Setup_1.0.4-trial.exe">⬇ 立即下载</a>
@@ -308,12 +317,12 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--green-2);outline-of
             <svg width="19" height="19" viewBox="0 0 24 24" fill="currentColor"><path d="M17.05 12.54c-.03-2.7 2.2-3.99 2.3-4.06-1.25-1.83-3.2-2.08-3.9-2.1-1.66-.17-3.23.98-4.07.98-.84 0-2.15-.95-3.53-.92-1.82.03-3.5 1.06-4.43 2.69-1.9 3.28-.48 8.15 1.36 10.82.9 1.3 1.97 2.77 3.38 2.72 1.36-.05 1.87-.88 3.52-.88 1.64 0 2.1.88 3.53.85 1.46-.03 2.38-1.32 3.27-2.63 1.04-1.5 1.46-2.95 1.48-3.03-.03-.02-2.82-1.08-2.85-4.24zM14.4 4.6c.75-.9 1.26-2.16 1.12-3.41-1.08.04-2.38.72-3.16 1.62-.7.8-1.3 2.08-1.14 3.3 1.2.1 2.44-.62 3.18-1.51z"/></svg>
           </span>
           <a class="btn-mac os-cta" href="https://carbontrading-1442764409.cos.ap-guangzhou.myqcloud.com/%E7%A2%B3%E5%B8%82%E5%9C%BA%E5%88%86%E6%9E%90%E5%B9%B3%E5%8F%B0_1.0.0-Mac.dmg">
-            <span>下载 Mac 版<span class="meta">macOS 12+ · Apple 芯片 · 首次发布 · 试用 30 天</span></span>
+            <span>下载 Mac 版<span class="meta">v1.0.0-Mac · macOS 12+ · Apple 芯片 · 首次发布 · 试用 30 天</span></span>
           </a>
         </div>
         <div class="os-foot">
           <span>使用 Intel 芯片的 Mac？<a href="https://carbontrading-1442764409.cos.ap-guangzhou.myqcloud.com/%E7%A2%B3%E5%B8%82%E5%9C%BA%E5%88%86%E6%9E%90%E5%B9%B3%E5%8F%B0_1.0.0-Mac-intel.dmg">点此下载 Intel 版</a></span>
-          <a class="os-vers" href="#versions">查看版本区别 →</a>
+          <a class="os-vers" href="#update">下载与更新 →</a>
         </div>
       </div>
       <div class="aux">
@@ -393,41 +402,11 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--green-2);outline-of
   </div>
 </section>
 
-<!-- 版本对比 -->
-<section id="versions">
-  <div class="wrap">
-    <div class="sec-h">版本选择</div>
-    <div class="sec-sub">先免费试用，试用期结束后按需激活普通版或专业版</div>
-    <div class="cmp">
-      <div class="cmp-row cmp-head">
-        <div class="cmp-feat">功能</div>
-        <div class="cmp-trial">试用版<span class="cmp-tag">30 天</span><div class="cmp-price">免费试用</div></div>
-        <div class="cmp-free">普通版<div class="cmp-price">激活 · 按需报价</div></div>
-        <div class="cmp-pro">专业版<span class="cmp-badge">推荐</span><div class="cmp-price">商务咨询</div></div>
-      </div>
-      <div class="cmp-row"><div class="cmp-feat">CEA + CCER 双市场行情看板</div><div class="cmp-trial"><span class="cmp-yes">✓</span></div><div class="cmp-free"><span class="cmp-yes">✓</span></div><div class="cmp-pro"><span class="cmp-yes">✓</span></div></div>
-      <div class="cmp-row"><div class="cmp-feat">交易日数据自动更新</div><div class="cmp-trial"><span class="cmp-yes">✓</span></div><div class="cmp-free"><span class="cmp-yes">✓</span></div><div class="cmp-pro"><span class="cmp-yes">✓</span></div></div>
-      <div class="cmp-row"><div class="cmp-feat">基础价格预测</div><div class="cmp-trial"><span class="cmp-yes">✓</span></div><div class="cmp-free"><span class="cmp-yes">✓</span></div><div class="cmp-pro"><span class="cmp-yes">✓</span></div></div>
-      <div class="cmp-row"><div class="cmp-feat">智能价格预测（多模型择优）</div><div class="cmp-trial"><span class="cmp-yes">✓</span></div><div class="cmp-free"><span class="cmp-no">—</span></div><div class="cmp-pro"><span class="cmp-yes">✓</span></div></div>
-      <div class="cmp-row"><div class="cmp-feat">次日价格预测 + 方向一致率</div><div class="cmp-trial"><span class="cmp-yes">✓</span></div><div class="cmp-free"><span class="cmp-no">—</span></div><div class="cmp-pro"><span class="cmp-yes">✓</span></div></div>
-      <div class="cmp-row"><div class="cmp-feat">历史回测与样本外评估</div><div class="cmp-trial"><span class="cmp-yes">✓</span></div><div class="cmp-free"><span class="cmp-no">—</span></div><div class="cmp-pro"><span class="cmp-yes">✓</span></div></div>
-      <div class="cmp-row"><div class="cmp-feat">行情数据导出</div><div class="cmp-trial"><span class="cmp-yes">✓</span></div><div class="cmp-free"><span class="cmp-no">—</span></div><div class="cmp-pro"><span class="cmp-yes">✓</span></div></div>
-      <div class="cmp-row"><div class="cmp-feat">优先更新与技术支持</div><div class="cmp-trial"><span class="cmp-yes">✓</span></div><div class="cmp-free"><span class="cmp-no">—</span></div><div class="cmp-pro"><span class="cmp-yes">✓</span></div></div>
-      <div class="cmp-row cmp-cta-row">
-        <a class="cmp-btn solid" href="#" data-dl="0">⬇ 下载试用版</a>
-        <a class="cmp-btn" href="#contact">💬 激活普通版</a>
-        <a class="cmp-btn" href="#contact">💬 专业版 · 商务咨询</a>
-      </div>
-    </div>
-    <div class="cmp-note">试用版 <b>30 天</b>到期后需激活；普通版 / 专业版使用同一安装包，<b>激活码决定功能范围</b> · 数据均存储在本机，加密保护</div>
-  </div>
-</section>
-
 <!-- 更新与下载 -->
 <section id="update">
   <div class="wrap">
     <div class="sec-h">更新与下载</div>
-    <div class="sec-sub">当前内测版本</div>
+    <div class="sec-sub">当前版本与下载（Windows / macOS）</div>
     <div class="ver-wrap">
       <div class="ver-card">
         <h3><span class="v-tag">V1.0.4-trial</span> 本次更新</h3>
@@ -441,6 +420,19 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--green-2);outline-of
       </div>
       <div>
         <div class="ver-list" id="verList"><!-- 由版本清单渲染 --></div>
+        <div class="ver-card mac-card">
+          <h3><span class="v-tag">macOS</span> Mac 版 v1.0.0-Mac · 首次发布</h3>
+          <ul>
+            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg><div>栏目秒回：<span>数据分析、算法引擎预测秒出结果，口径与既往一致</span></div></li>
+            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg><div>安装即内置官方历史行情：<span>CEA 2021-07 至今 / CCER 2025-03 至今，首次打开即可用</span></div></li>
+            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg><div>数据本地加密 · 启动自愈：<span>试用 30 天，到期可在应用内激活</span></div></li>
+          </ul>
+          <p class="hint">Apple 芯片版 177.3 MB · Intel 版 180.3 MB</p>
+          <div class="mac-links">
+            <a class="cmp-btn" href="https://carbontrading-1442764409.cos.ap-guangzhou.myqcloud.com/%E7%A2%B3%E5%B8%82%E5%9C%BA%E5%88%86%E6%9E%90%E5%B9%B3%E5%8F%B0_1.0.0-Mac.dmg">⬇ 下载 Apple 芯片版</a>
+            <a class="cmp-btn" href="https://carbontrading-1442764409.cos.ap-guangzhou.myqcloud.com/%E7%A2%B3%E5%B8%82%E5%9C%BA%E5%88%86%E6%9E%90%E5%B9%B3%E5%8F%B0_1.0.0-Mac-intel.dmg">⬇ 下载 Intel 版</a>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -480,7 +472,7 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--green-2);outline-of
 
 <footer>
   <div class="wrap foot-in">
-    <span><b>碳市场分析平台</b> · 当前版本 <b id="curVer">V1.0.4-trial</b></span>
+    <span><b>碳市场分析平台</b> · 当前版本：Windows <b id="curVer">V1.0.4-trial</b> · macOS <b>1.0.0-Mac</b></span>
     <span>© 2026 · 数据仅供参考，不构成投资建议</span>
   </div>
 </footer>
