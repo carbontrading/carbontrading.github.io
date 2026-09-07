@@ -443,8 +443,8 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--green-2);outline-of
   <div class="wrap">
     <div class="sec-h">联系我们</div>
     <div class="contact-line">
-      <div class="lb">联系电话 / 微信号</div>
-      <div class="vl">待填写</div>
+      <div class="lb">快捷反馈</div>
+      <div class="vl">点击右下角「📮 意见反馈」直接留言，我们会认真查看并回复。</div>
     </div>
   </div>
 </section>
@@ -456,6 +456,7 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--green-2);outline-of
     <h3>意见反馈 <button class="close" id="fbClose" aria-label="关闭">×</button></h3>
     <div class="sub">内测期间反馈改进最快，感谢你的建议！</div>
     <form id="fbForm">
+      <input type="text" name="_honey" value="" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden;opacity:0">
       <div class="mf">
         <label>你的建议或遇到的问题</label>
         <textarea name="feedback" required placeholder="例如：希望增加 XX 功能 / 某处操作不便 / 发现一个 bug…"></textarea>
@@ -556,14 +557,20 @@ var VERSIONS = [
   form.addEventListener("submit", function (e) {
     e.preventDefault();
     var fd = new FormData(form);
+    /* 蜜罐字段被填写 = 机器人，静默放行，避免灌入垃圾反馈 */
+    if (fd.get("_honey")) {
+      form.style.display = "none"; ok.style.display = "block";
+      ok.innerHTML = '<div class="big">✅</div>感谢反馈！我们会认真对待每一条建议。';
+      return;
+    }
     fd.set("_captcha", "false");
     fd.set("_subject", "碳市场分析平台 · 官网意见反馈");
     fetch(ENDPOINT, { method: "POST", body: fd, headers: { "Accept": "application/json" } })
       .then(function (r) {
         if (r.ok) { form.style.display = "none"; ok.style.display = "block"; ok.innerHTML = '<div class="big">✅</div>感谢反馈！我们会认真对待每一条建议。'; }
-        else { alert("提交失败，请重试或通过「联系我们」反馈。"); }
+        else { alert("提交失败，请稍后重试；仍失败可点右下角「客服助手」留言，我们会尽快跟进。"); }
       })
-      .catch(function () { alert("网络异常，提交失败，请稍后再试。"); });
+      .catch(function () { alert("网络异常，请稍后重试；仍失败可点右下角「客服助手」留言，我们会尽快跟进。"); });
   });
 })();
 </script>
