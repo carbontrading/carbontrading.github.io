@@ -192,6 +192,73 @@ footer{border-top:1px solid var(--line);padding:28px 0 40px;font-size:12.5px;col
   .feat-grid{grid-template-columns:1fr}
   .btns .btn-dl,.btns .btn-ghost,.btns .btn-mac{width:100%;justify-content:center}
 }
+/* ========== 2026-09-05 · 视觉精修 + 下载区重排（皮肤 v2）========== */
+:root{
+  --bg:#070C18;--bg-2:#0C1424;--bg-3:#101B30;
+  --line:rgba(148,163,184,.14);--line-strong:rgba(52,211,153,.34);
+  --green:#0EA575;--green-2:#38D39F;--green-soft:rgba(14,165,117,.14);
+  --radius:16px;
+}
+html{scroll-behavior:smooth}
+section,[id]{scroll-margin-top:72px}
+body{
+  background:
+    radial-gradient(1100px 520px at 88% -10%,rgba(14,165,117,.10),transparent 60%),
+    radial-gradient(900px 460px at -12% 20%,rgba(56,189,248,.055),transparent 55%),
+    var(--bg);
+  letter-spacing:.1px;
+}
+.wrap{max-width:1060px}
+nav{background:rgba(7,12,24,.8)}
+h1{font-size:clamp(32px,4.1vw,46px);letter-spacing:.4px}
+h1 .g{background:linear-gradient(92deg,var(--green-2),#86E0B0)}
+section{padding:68px 0}
+.sec-h{font-size:clamp(23px,2.6vw,30px)}
+.sell{gap:10px;margin:22px 0 0}
+.sell .s{background:linear-gradient(180deg,rgba(16,27,48,.6),rgba(10,16,28,.5));border-radius:12px}
+.sell .s:hover{border-color:var(--line-strong)}
+/* ---- 首屏下载面板：Windows / macOS 清晰二选一 ---- */
+.os-panel{margin-top:26px;max-width:560px;border:1px solid var(--line);border-radius:18px;background:linear-gradient(180deg,rgba(17,28,52,.9),rgba(9,15,27,.94));box-shadow:0 20px 52px rgba(0,0,0,.35);overflow:hidden}
+.os-row{display:flex;align-items:stretch;border-bottom:1px solid var(--line)}
+.os-row:last-of-type{border-bottom:none}
+.os-badge{flex:none;width:56px;display:flex;align-items:center;justify-content:center;color:var(--green-2);border-right:1px solid var(--line);background:rgba(255,255,255,.015)}
+.os-row.mac .os-badge{color:#B4C2DA}
+.os-cta{flex:1;min-width:0;display:flex;align-items:center;gap:12px;padding:17px 18px;color:var(--text);transition:background .18s,color .18s}
+.os-cta span{font-size:16px;font-weight:700;line-height:1.32}
+.os-cta .meta{display:block;font-weight:500;font-size:12px;color:var(--muted);margin-top:2px;line-height:1.35}
+.os-row.win:hover{background:rgba(14,165,117,.08)}
+.os-row.mac:hover{background:rgba(148,163,184,.07)}
+.os-cta::after{content:"↓";flex:none;font-size:15px;color:var(--green-2);margin-left:auto;transition:transform .18s}
+.os-row.mac .os-cta::after{color:#B4C2DA}
+.os-row:hover .os-cta::after{transform:translateY(3px)}
+/* 中和旧按钮样式（.btn-dl/.btn-mac 现在作为整行点击区） */
+.os-cta.btn-dl,.os-cta.btn-mac{background:transparent;box-shadow:none;border:none;color:var(--text)}
+.os-cta.btn-dl:hover,.os-cta.btn-mac:hover{transform:none;border-color:transparent;background:transparent}
+.os-foot{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:8px 14px;padding:11px 18px;font-size:12.5px;color:var(--muted);background:rgba(5,9,17,.55)}
+.os-foot a{color:var(--green-2);font-weight:600}
+.os-foot a:hover{text-decoration:underline}
+.os-vers{white-space:nowrap;opacity:.9}
+/* ---- 通用精修：卡片 / 表格 / 版本行 ---- */
+.feat{border-color:var(--line);background:linear-gradient(180deg,rgba(16,27,48,.92),rgba(10,16,28,.72));transition:transform .18s,border-color .18s,box-shadow .18s}
+.feat:hover{transform:translateY(-2px);border-color:var(--line-strong);box-shadow:0 14px 34px rgba(0,0,0,.25)}
+.perf,.cmp,.ver-card{box-shadow:0 16px 40px rgba(0,0,0,.22)}
+.vrow{transition:border-color .18s,background .18s}
+.vrow:not(.latest):hover{border-color:var(--line-strong)}
+.vrow.latest{background:linear-gradient(90deg,rgba(16,185,129,.1),var(--bg-2) 60%)}
+.cmp-btn,.cmp-btn.solid{transition:transform .15s,filter .15s}
+.cmp-btn.solid:hover{transform:translateY(-1px)}
+.panel{box-shadow:0 24px 60px rgba(0,0,0,.5),0 0 44px rgba(16,185,129,.09)}
+/* ---- 焦点可达性 & 动效偏好 ---- */
+a:focus-visible,button:focus-visible{outline:2px solid var(--green-2);outline-offset:2px;border-radius:6px}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}
+}
+@media (max-width:640px){
+  .os-badge{width:46px}
+  .os-cta{padding:15px 14px}
+  .os-foot{flex-direction:column;align-items:flex-start}
+  .sell .s b{font-size:13.5px}
+}
 </style>
 </head>
 <body>
@@ -227,21 +294,28 @@ footer{border-top:1px solid var(--line);padding:28px 0 40px;font-size:12.5px;col
         <div class="s"><b><span class="dot">✓</span>履约智提醒</b><span>把握履约窗口与资产处置时机</span></div>
       </div>
 
-      <div class="btns">
-        <a class="btn-dl" href="#" data-dl="0">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="M7 10l5 5 5-5"/><path d="M12 15V3"/></svg>
-          <span>下载内测版 V1.0.4-trial<span class="meta">145.2 MB · Windows 10/11 · 试用 30 天</span></span>
-        </a>
-        <a class="btn-mac" href="https://carbontrading-1442764409.cos.ap-guangzhou.myqcloud.com/%E7%A2%B3%E5%B8%82%E5%9C%BA%E5%88%86%E6%9E%90%E5%B9%B3%E5%8F%B0_1.0.0-Mac.dmg">
-          <svg class="ico" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-label="Apple"><path d="M17.05 12.54c-.03-2.7 2.2-3.99 2.3-4.06-1.25-1.83-3.2-2.08-3.9-2.1-1.66-.17-3.23.98-4.07.98-.84 0-2.15-.95-3.53-.92-1.82.03-3.5 1.06-4.43 2.69-1.9 3.28-.48 8.15 1.36 10.82.9 1.3 1.97 2.77 3.38 2.72 1.36-.05 1.87-.88 3.52-.88 1.64 0 2.1.88 3.53.85 1.46-.03 2.38-1.32 3.27-2.63 1.04-1.5 1.46-2.95 1.48-3.03-.03-.02-2.82-1.08-2.85-4.24zM14.4 4.6c.75-.9 1.26-2.16 1.12-3.41-1.08.04-2.38.72-3.16 1.62-.7.8-1.3 2.08-1.14 3.3 1.2.1 2.44-.62 3.18-1.51z"/></svg>
-          <span>下载 Mac 版<span class="meta">macOS 12+ · Apple 芯片 · 首次发布 · 试用 30 天</span></span>
-        </a>
-        <a class="btn-ghost" href="#versions">
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>
-          查看版本区别
-        </a>
+      <div class="os-panel">
+        <div class="os-row win">
+          <span class="os-badge" aria-hidden="true">
+            <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="4.5" y="4.5" width="6.6" height="6.6" rx="1.5"/><rect x="12.9" y="4.5" width="6.6" height="6.6" rx="1.5"/><rect x="4.5" y="12.9" width="6.6" height="6.6" rx="1.5"/><rect x="12.9" y="12.9" width="6.6" height="6.6" rx="1.5"/></svg>
+          </span>
+          <a class="btn-dl os-cta" href="#" data-dl="0">
+            <span>下载 Windows 版<span class="meta">加载最新版本信息中…</span></span>
+          </a>
+        </div>
+        <div class="os-row mac">
+          <span class="os-badge" aria-hidden="true">
+            <svg width="19" height="19" viewBox="0 0 24 24" fill="currentColor"><path d="M17.05 12.54c-.03-2.7 2.2-3.99 2.3-4.06-1.25-1.83-3.2-2.08-3.9-2.1-1.66-.17-3.23.98-4.07.98-.84 0-2.15-.95-3.53-.92-1.82.03-3.5 1.06-4.43 2.69-1.9 3.28-.48 8.15 1.36 10.82.9 1.3 1.97 2.77 3.38 2.72 1.36-.05 1.87-.88 3.52-.88 1.64 0 2.1.88 3.53.85 1.46-.03 2.38-1.32 3.27-2.63 1.04-1.5 1.46-2.95 1.48-3.03-.03-.02-2.82-1.08-2.85-4.24zM14.4 4.6c.75-.9 1.26-2.16 1.12-3.41-1.08.04-2.38.72-3.16 1.62-.7.8-1.3 2.08-1.14 3.3 1.2.1 2.44-.62 3.18-1.51z"/></svg>
+          </span>
+          <a class="btn-mac os-cta" href="https://carbontrading-1442764409.cos.ap-guangzhou.myqcloud.com/%E7%A2%B3%E5%B8%82%E5%9C%BA%E5%88%86%E6%9E%90%E5%B9%B3%E5%8F%B0_1.0.0-Mac.dmg">
+            <span>下载 Mac 版<span class="meta">macOS 12+ · Apple 芯片 · 首次发布 · 试用 30 天</span></span>
+          </a>
+        </div>
+        <div class="os-foot">
+          <span>使用 Intel 芯片的 Mac？<a href="https://carbontrading-1442764409.cos.ap-guangzhou.myqcloud.com/%E7%A2%B3%E5%B8%82%E5%9C%BA%E5%88%86%E6%9E%90%E5%B9%B3%E5%8F%B0_1.0.0-Mac-intel.dmg">点此下载 Intel 版</a></span>
+          <a class="os-vers" href="#versions">查看版本区别 →</a>
+        </div>
       </div>
-      <p class="mac-alt">使用 Intel 芯片的 Mac？<a href="https://carbontrading-1442764409.cos.ap-guangzhou.myqcloud.com/%E7%A2%B3%E5%B8%82%E5%9C%BA%E5%88%86%E6%9E%90%E5%B9%B3%E5%8F%B0_1.0.0-Mac-intel.dmg">点此下载 Intel 版</a></p>
       <div class="aux">
         <span>一键安装即用</span><span>行情数据自动更新</span><span>本地加密存储</span>
       </div>
