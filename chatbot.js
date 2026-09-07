@@ -51,14 +51,15 @@
   }
 
   /* ---------------- UI ---------------- */
-  var ACCENT = '#0F6E56';
+  var ACCENT = '#0E9F6E';
   var STYLE = '' +
-    '#cb-bubble{position:fixed;right:20px;bottom:20px;width:56px;height:56px;border-radius:50%;' +
-    'background:' + ACCENT + ';color:#fff;cursor:pointer;z-index:999999;box-shadow:0 4px 14px rgba(0,0,0,.18);' +
-    'display:flex;align-items:center;justify-content:center;transition:transform .15s}' +
-    '#cb-bubble:hover{transform:scale(1.06)}' +
-    '#cb-panel{position:fixed;right:20px;bottom:88px;width:360px;max-width:calc(100vw - 40px);height:480px;' +
-    'max-height:calc(100vh - 120px);background:#fff;border:1px solid #e5e7eb;border-radius:14px;' +
+    '#cb-bubble{position:fixed;right:22px;bottom:86px;display:inline-flex;align-items:center;gap:8px;' +
+    'background:' + ACCENT + ';color:#fff;cursor:pointer;z-index:999999;padding:12px 20px;border-radius:999px;' +
+    'font:600 14px/1.2 -apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;' +
+    'box-shadow:0 6px 18px rgba(0,0,0,.22);transition:transform .15s,box-shadow .15s}' +
+    '#cb-bubble:hover{transform:translateY(-2px);box-shadow:0 10px 24px rgba(0,0,0,.28)}' +
+    '#cb-panel{position:fixed;right:22px;bottom:150px;width:360px;max-width:calc(100vw - 44px);height:480px;' +
+    'max-height:calc(100vh - 212px);background:#fff;border:1px solid #e5e7eb;border-radius:14px;' +
     'box-shadow:0 10px 30px rgba(0,0,0,.18);z-index:999999;display:none;flex-direction:column;overflow:hidden;' +
     'font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif}' +
     '#cb-head{background:' + ACCENT + ';color:#fff;padding:12px 14px;font-size:14px;font-weight:600;' +
@@ -73,7 +74,7 @@
     '.cb-bot{background:#fff;border:1px solid #e5e7eb;color:#1f2937;align-self:flex-start;border-bottom-left-radius:4px}' +
     '.cb-user{background:' + ACCENT + ';color:#fff;margin-left:auto;border-bottom-right-radius:4px}' +
     '.cb-row{display:flex;flex-direction:column}' +
-    '.cb-chip{display:inline-block;margin:4px 6px 0 0;padding:6px 10px;background:#eef2f0;color:#0F6E56;' +
+    '.cb-chip{display:inline-block;margin:4px 6px 0 0;padding:6px 10px;background:#eef2f0;color:' + ACCENT + ';' +
     'border:1px solid #cfe3da;border-radius:16px;font-size:12px;cursor:pointer}' +
     '.cb-chip:hover{background:#e0ece6}';
 
@@ -95,7 +96,7 @@
     var style = el('style'); style.textContent = STYLE; document.head.appendChild(style);
 
     var bubble = el('div', { id: 'cb-bubble', title: '客服助手' });
-    bubble.innerHTML = '<svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-8.5 8.5 8.5 8.5 0 0 1-3.6-.8L3 21l1.9-5.4A8.38 8.38 0 0 1 4 11.5 8.5 8.5 0 0 1 12.5 3 8.38 8.38 0 0 1 21 11.5z"/></svg>';
+    bubble.innerHTML = '<svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-8.5 8.5 8.5 8.5 0 0 1-3.6-.8L3 21l1.9-5.4A8.38 8.38 0 0 1 4 11.5 8.5 8.5 0 0 1 12.5 3 8.38 8.38 0 0 1 21 11.5z"/></svg><span>客服助手</span>';
 
     var panel = el('div', { id: 'cb-panel' });
     var head = el('div', { id: 'cb-head' }, '<span>客服助手</span><span id="cb-close">×</span>');
