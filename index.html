@@ -533,7 +533,7 @@ var VERSIONS = [
   });
 })();
 
-/* ---------- 意见反馈（Formspree，邮箱提供后填入 ENDPOINT 即可启用） ---------- */
+/* ---------- 意见反馈（FormSubmit，用户提交→实时转发至管理员邮箱） ---------- */
 (function () {
   var btn = document.getElementById("fbBtn");
   var mask = document.getElementById("fbMask");
@@ -542,25 +542,22 @@ var VERSIONS = [
   var ok = document.getElementById("fbOk");
   if (!btn || !mask) return;
   /* ================================================================
-   * 意见反馈接收通道（Formspree）
-   * 启用方法：按《官网意见反馈_Formspree配置.md》在 Windows 侧注册后，
-   * 把下面双引号内填成你的表单地址即可，例如：
-   *   var ENDPOINT = "https://formspree.io/f/xxxxxxxx";
-   * 填写后提交并推送，用户每条反馈会实时转发到你绑定的邮箱。
+   * 意见反馈接收通道（FormSubmit · 免注册）
+   * ENDPOINT 固定为：https://formsubmit.co/ajax/<收件邮箱>
+   * 每条用户反馈提交后，FormSubmit 会实时转发到该邮箱；
+   * 首次提交时收件邮箱会收到一封激活邮件，点击激活后即持续生效。
+   * 说明：收件邮箱会公开在页面里；如日后担心收到垃圾信，可在
+   * FormSubmit 后台(或 _captcha 参数)改用其 Turnstile 验证。
    * ================================================================ */
-  var ENDPOINT = "";
+  var ENDPOINT = "https://formsubmit.co/ajax/18610804830@163.com";
   btn.addEventListener("click", function () { mask.classList.add("show"); });
   close.addEventListener("click", function () { mask.classList.remove("show"); });
   mask.addEventListener("click", function (e) { if (e.target === mask) mask.classList.remove("show"); });
   form.addEventListener("submit", function (e) {
     e.preventDefault();
-    if (!ENDPOINT) {
-      form.style.display = "none";
-      ok.style.display = "block";
-      ok.innerHTML = '<div class="big">📭</div>反馈通道正在配置中，请稍后再试，或直接通过「联系我们」联系。';
-      return;
-    }
     var fd = new FormData(form);
+    fd.set("_captcha", "false");
+    fd.set("_subject", "碳市场分析平台 · 官网意见反馈");
     fetch(ENDPOINT, { method: "POST", body: fd, headers: { "Accept": "application/json" } })
       .then(function (r) {
         if (r.ok) { form.style.display = "none"; ok.style.display = "block"; ok.innerHTML = '<div class="big">✅</div>感谢反馈！我们会认真对待每一条建议。'; }
