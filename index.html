@@ -541,7 +541,13 @@ var VERSIONS = [
   var form = document.getElementById("fbForm");
   var ok = document.getElementById("fbOk");
   if (!btn || !mask) return;
-  // TODO: 用户提供邮箱并注册 Formspree 后，把 ENDPOINT 填成 https://formspree.io/f/xxxx
+  /* ================================================================
+   * 意见反馈接收通道（Formspree）
+   * 启用方法：按《官网意见反馈_Formspree配置.md》在 Windows 侧注册后，
+   * 把下面双引号内填成你的表单地址即可，例如：
+   *   var ENDPOINT = "https://formspree.io/f/xxxxxxxx";
+   * 填写后提交并推送，用户每条反馈会实时转发到你绑定的邮箱。
+   * ================================================================ */
   var ENDPOINT = "";
   btn.addEventListener("click", function () { mask.classList.add("show"); });
   close.addEventListener("click", function () { mask.classList.remove("show"); });
