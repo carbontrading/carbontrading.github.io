@@ -576,5 +576,41 @@ var VERSIONS = [
 </script>
 <script src="kb/faq.js"></script>
 <script src="chatbot.js" defer></script>
+<script>
+/* ============ 系统维护：临时停用所有下载（Windows / macOS） ============ */
+(function () {
+  var mask = null;
+  function ensureMask() {
+    if (mask) return mask;
+    mask = document.createElement('div');
+    mask.className = 'modal-mask';
+    mask.style.zIndex = 200;
+    mask.innerHTML =
+      '<div class="modal"><h3>系统维护中<button class="close" type="button" aria-label="关闭">×</button></h3>' +
+      '<div class="sub">下载功能临时关闭，给您带来不便敬请谅解</div>' +
+      '<p style="font-size:15px;line-height:1.8;margin:0;color:var(--text,#1f2937)">系统维护中，敬请期待</p></div>';
+    document.body.appendChild(mask);
+    mask.addEventListener('click', function (e) {
+      if (e.target === mask || (e.target.classList && e.target.classList.contains('close'))) hide();
+    });
+    return mask;
+  }
+  function show() { ensureMask().classList.add('show'); }
+  function hide() { if (mask) mask.classList.remove('show'); }
+  document.addEventListener('click', function (e) {
+    var a = e.target && e.target.closest ? e.target.closest('a') : null;
+    if (!a) return;
+    var href = a.getAttribute('href') || '';
+    var isDownload =
+      a.classList.contains('btn-dl') || a.classList.contains('nav-cta') ||
+      a.classList.contains('btn-mac') || a.classList.contains('os-cta') ||
+      a.classList.contains('cmp-btn') || a.classList.contains('mac-alt') ||
+      a.hasAttribute('data-dl') ||
+      href.indexOf('myqcloud.com') >= 0 ||
+      /\.(exe|dmg)(\?|#|$)/i.test(href);
+    if (isDownload) { e.preventDefault(); e.stopPropagation(); show(); }
+  });
+})();
+</script>
 </body>
 </html>
