@@ -3,612 +3,409 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="碳市场分析平台 · CEA/CCER 双市场行情、智能预测、履约策略提醒的桌面工具，支持 Windows 与 macOS。内测版 V1.0.4-trial 试用 30 天。">
+<meta name="description" content="碳市场分析平台 · 官方下载。面向碳市场学习与研究：CEA / CCER 双市场行情、走势预测与履约节奏辅助。免费试用 1 天，数据全部保存在本机。">
 <title>碳市场分析平台 · 官方下载</title>
 <style>
 :root{
-  --bg:#0A111F;
-  --bg-2:#0E1830;
-  --bg-3:#15223E;
-  --line:rgba(148,163,184,.16);
-  --line-strong:rgba(52,211,153,.28);
-  --text:#E6EDF7;
-  --muted:#8A9AB5;
-  --muted-2:#5E7391;
-  --green:#10B981;
-  --green-2:#34D399;
-  --green-soft:rgba(16,185,129,.12);
-  --amber:#F5B544;
-  --radius:14px;
+  --bg:#0A111F; --bg-2:#0E1830; --bg-3:#13203A;
+  --line:rgba(148,163,184,.16); --line-2:rgba(148,163,184,.10);
+  --line-strong:rgba(52,211,153,.34);
+  --text:#E6EDF7; --muted:#8A9AB5; --muted-2:#5E7391;
+  --green:#10B981; --green-2:#34D399; --green-soft:rgba(16,185,129,.10);
+  --radius:16px;
   --font:"PingFang SC","Microsoft YaHei","Segoe UI",system-ui,-apple-system,sans-serif;
-  --mono:ui-monospace,"SF Mono",Consolas,"Courier New",monospace;
+  --mono:ui-monospace,"SF Mono",Consolas,monospace;
 }
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{background:var(--bg);color:var(--text);font:400 15px/1.7 var(--font);-webkit-font-smoothing:antialiased}
+body{background:var(--bg);color:var(--text);font:400 15px/1.75 var(--font);-webkit-font-smoothing:antialiased}
 a{color:inherit;text-decoration:none}
-.wrap{max-width:1040px;margin:0 auto;padding:0 24px}
+.wrap{max-width:940px;margin:0 auto;padding:0 24px}
 
-/* 顶部导航 */
-nav{position:sticky;top:0;z-index:50;backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);background:rgba(10,17,31,.72);border-bottom:1px solid var(--line)}
+/* nav */
+nav{position:sticky;top:0;z-index:50;backdrop-filter:blur(14px);background:rgba(10,17,31,.82);border-bottom:1px solid var(--line-2)}
 .nav-in{display:flex;align-items:center;justify-content:space-between;height:60px}
-.brand{display:flex;align-items:center;gap:10px;font-weight:600;font-size:16px}
-.logo{width:30px;height:30px;border-radius:9px;flex:none;background:linear-gradient(135deg,var(--green),#0E9F6E);display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:700;color:#fff;box-shadow:0 0 18px rgba(16,185,129,.35)}
-.brand small{color:var(--muted);font-weight:400;font-size:12px}
-.nav-links{display:flex;gap:26px;font-size:14px;color:var(--muted)}
+.brand{display:flex;align-items:center;gap:10px;font-weight:600;font-size:16px;letter-spacing:.3px}
+.logo{width:30px;height:30px;border-radius:9px;background:linear-gradient(135deg,var(--green),#0E9F6E);display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:700;color:#04110B}
+.nav-links{display:flex;gap:28px;font-size:13.5px;color:var(--muted)}
+.nav-links a{transition:color .18s}
 .nav-links a:hover{color:var(--green-2)}
-.nav-cta{padding:8px 16px;border-radius:999px;background:var(--green);color:#04110B;font-weight:600;font-size:13px;transition:filter .15s}
-.nav-cta:hover{filter:brightness(1.12)}
 
-/* Hero */
-.hero{position:relative;overflow:hidden;border-bottom:1px solid var(--line);background:radial-gradient(720px 340px at 82% 12%,rgba(16,185,129,.14),transparent 62%),var(--bg)}
-.beta-bar{background:linear-gradient(90deg,rgba(245,181,68,.14),rgba(16,185,129,.10));border-bottom:1px solid var(--line-strong);padding:8px 0;text-align:center;font-size:13px;color:var(--amber)}
-.beta-bar b{color:var(--green-2)}
-.hero .wrap{display:grid;grid-template-columns:1.08fr .92fr;gap:44px;align-items:center;padding-top:48px;padding-bottom:60px}
-.h-tag{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--line-strong);background:var(--green-soft);color:var(--green-2);font-size:12px;border-radius:999px;padding:5px 12px}
-.h-tag .pulse{width:7px;height:7px;border-radius:50%;background:var(--green);box-shadow:0 0 0 0 rgba(16,185,129,.6);animation:pulse 2.2s infinite}
-@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(16,185,129,.55)}70%{box-shadow:0 0 0 9px rgba(16,185,129,0)}100%{box-shadow:0 0 0 0 rgba(16,185,129,0)}}
-h1{font-size:40px;line-height:1.22;font-weight:700;margin:16px 0 10px;letter-spacing:.5px}
-h1 .g{background:linear-gradient(90deg,var(--green-2),#7DD9A8);-webkit-background-clip:text;background-clip:text;color:transparent}
-.h-sub{color:var(--muted);font-size:15px}
-.h-sub b{color:var(--green-2);font-weight:600}
-.sell{display:flex;gap:12px;margin:24px 0 26px}
-.sell .s{flex:1;border:1px solid var(--line);border-radius:var(--radius);background:rgba(14,24,48,.55);padding:14px 14px 12px}
-.sell .s b{display:flex;align-items:center;gap:7px;font-size:14px;font-weight:600}
-.sell .s b .dot{width:16px;height:16px;border-radius:5px;background:var(--green-soft);color:var(--green-2);display:flex;align-items:center;justify-content:center;flex:none}
-.sell .s span{display:block;margin-top:4px;font-size:12px;color:var(--muted);line-height:1.5}
-.btns{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
-.btn-dl{display:inline-flex;align-items:center;gap:10px;background:linear-gradient(135deg,var(--green),#0E9F6E);color:#04110B;font-size:17px;font-weight:700;padding:15px 30px;border-radius:12px;box-shadow:0 8px 26px rgba(16,185,129,.32);transition:transform .15s}
-.btn-dl:hover{transform:translateY(-2px)}
-.btn-dl .meta{display:block;font-size:11px;font-weight:500;opacity:.75;line-height:1.2;text-align:left}
-.btn-ghost{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--line-strong);color:var(--green-2);font-size:14px;font-weight:600;padding:14px 22px;border-radius:12px;background:rgba(16,185,129,.06)}
-/* Mac 下载按钮（次按钮 · 边框风格） */
-.btn-mac{display:inline-flex;align-items:center;gap:10px;border:1px solid rgba(148,163,184,.42);color:var(--text);font-size:16px;font-weight:600;padding:13px 22px;border-radius:12px;background:rgba(148,163,184,.07);transition:transform .15s,border-color .15s,background .15s}
-.btn-mac:hover{transform:translateY(-2px);border-color:var(--green-2);background:rgba(16,185,129,.08)}
-.btn-mac .ico{color:var(--green-2);flex:none}
-.btn-mac .meta{display:block;font-size:11px;font-weight:500;color:var(--muted);line-height:1.25;text-align:left;margin-top:1px}
-.mac-alt{margin-top:12px;font-size:12px;color:var(--muted)}
-.mac-alt a{color:var(--green-2);font-weight:600;margin-left:4px}
-.mac-alt a:hover{text-decoration:underline}
-.aux{margin-top:14px;font-size:12px;color:var(--muted);display:flex;gap:18px;flex-wrap:wrap}
-.aux span{display:inline-flex;align-items:center;gap:6px}
+/* hero */
+.hero{position:relative;padding:76px 0 64px;text-align:center;overflow:hidden;
+  background:radial-gradient(680px 340px at 50% -6%,rgba(16,185,129,.16),transparent 64%)}
+.hero::after{content:"";position:absolute;left:50%;bottom:0;transform:translateX(-50%);width:min(760px,86%);height:1px;
+  background:linear-gradient(90deg,transparent,var(--line),transparent)}
+.eyebrow{display:inline-flex;align-items:center;gap:7px;font-size:12px;color:var(--green-2);
+  border:1px solid var(--line-strong);background:var(--green-soft);border-radius:999px;padding:5px 14px;letter-spacing:.4px}
+.hero h1{font-size:40px;line-height:1.22;font-weight:700;letter-spacing:.6px;margin:18px 0 14px}
+.hero .sub{color:var(--muted);font-size:15.5px;max-width:700px;margin:0 auto;line-height:1.95}
+.hero .sub .ln{display:block}
+@media (min-width:841px){.hero .sub .ln{white-space:nowrap}}
+.dl-pair{display:flex;justify-content:center;align-items:flex-start;gap:26px;flex-wrap:wrap;margin-top:30px}
+.dl-item{width:min(320px,100%);display:flex;flex-direction:column;align-items:center;gap:10px}
+.btn-dl{display:inline-flex;align-items:center;justify-content:center;gap:11px;width:100%;
+  background:linear-gradient(135deg,var(--green),#0E9F6E);color:#04110B;font-size:17px;font-weight:700;
+  padding:16px 24px;border-radius:13px;box-shadow:0 10px 30px rgba(16,185,129,.30);transition:transform .16s,box-shadow .16s}
+.btn-dl:hover{transform:translateY(-2px);box-shadow:0 14px 36px rgba(16,185,129,.40)}
+.btn-ghost{display:inline-flex;align-items:center;justify-content:center;gap:9px;width:100%;
+  border:1px solid var(--line-strong);background:rgba(16,185,129,.07);
+  color:var(--green-2);font-size:16px;font-weight:600;padding:16px 24px;border-radius:13px;transition:background .2s,transform .16s}
+.btn-ghost:hover{background:rgba(16,185,129,.16);transform:translateY(-2px)}
+.dl-cap{font-size:12.5px;color:var(--muted-2);line-height:1.65;text-align:center}
+.chips{display:flex;justify-content:center;flex-wrap:wrap;gap:8px;margin-top:22px}
+.chip{font-size:12px;color:var(--muted);border:1px solid var(--line);border-radius:8px;padding:5px 11px;background:rgba(255,255,255,.02)}
+.chip b{color:var(--text);font-weight:600;font-family:var(--mono)}
+.mac-hint{margin-top:12px;font-size:12.5px;color:var(--muted-2)}
+.mac-hint b{color:var(--muted);font-weight:500}
 
-/* 行情面板 */
-.panel{background:linear-gradient(180deg,#0E1830,#0B1324);border:1px solid var(--line-strong);border-radius:16px;padding:18px 18px 14px;box-shadow:0 24px 60px rgba(0,0,0,.45),0 0 44px rgba(16,185,129,.07)}
-.p-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:6px}
-.p-head b{font-size:13px;font-weight:600;display:flex;align-items:center;gap:8px}
-.p-head b .mini{width:8px;height:8px;border-radius:2px;background:var(--green);box-shadow:0 0 8px var(--green)}
-.p-head span{font-size:11px;color:var(--muted)}
-.p-note{display:flex;justify-content:space-between;align-items:center;margin-top:8px;font-size:11px;color:var(--muted-2)}
-.p-note em{font-style:normal;color:var(--green-2);border:1px dashed var(--line-strong);padding:1px 8px;border-radius:6px}
+/* section shells */
+section{padding:64px 0;border-top:1px solid var(--line-2)}
+.s-label{text-align:center;font-size:12px;letter-spacing:2px;color:var(--green-2);font-family:var(--mono);margin-bottom:12px}
+.s-h{text-align:center;font-size:25px;font-weight:700;letter-spacing:.5px}
+.s-sub{text-align:center;color:var(--muted);font-size:14px;margin:10px auto 40px;max-width:560px}
 
-/* 通用 section */
-section{padding:60px 0;border-bottom:1px solid var(--line)}
-.sec-h{font-size:26px;font-weight:700;text-align:center}
-.sec-sub{color:var(--muted);text-align:center;font-size:14px;margin:8px 0 34px}
+/* pain cards */
+.pain-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+.pain{position:relative;border:1px solid var(--line);border-radius:var(--radius);background:var(--bg-2);padding:22px 22px 20px;overflow:hidden}
+.pain::before{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:linear-gradient(180deg,rgba(148,163,184,.45),rgba(148,163,184,.06))}
+.pain .no{font-family:var(--mono);font-size:12px;color:var(--muted-2);letter-spacing:1px}
+.pain h3{font-size:15.5px;font-weight:600;margin:8px 0 7px}
+.pain p{font-size:13px;color:var(--muted);line-height:1.72}
+.pain.wide{grid-column:1 / -1}
 
-/* 功能与安全 */
-.feat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-.feat{border:1px solid var(--line);border-radius:var(--radius);background:var(--bg-2);padding:24px 20px}
-.feat h3{font-size:16px;font-weight:600;margin-bottom:8px;display:flex;align-items:center;gap:9px}
-.feat h3 .ic{width:32px;height:32px;border-radius:9px;background:var(--green-soft);color:var(--green-2);display:flex;align-items:center;justify-content:center;flex:none;font-size:15px}
-.feat p{font-size:13px;color:var(--muted);line-height:1.7}
-.feat p b{color:var(--text);font-weight:500}
+/* solution cards */
+.sol-grid{display:grid;gap:14px}
+.sol{display:flex;gap:18px;border:1px solid var(--line);border-radius:var(--radius);background:var(--bg-2);padding:22px 24px;transition:border-color .2s,transform .2s}
+.sol:hover{border-color:var(--line-strong);transform:translateY(-2px)}
+.sol .ic{width:46px;height:46px;border-radius:12px;background:var(--green-soft);color:var(--green-2);
+  display:flex;align-items:center;justify-content:center;font-size:20px;flex:none;border:1px solid var(--line-strong)}
+.sol .body{flex:1;min-width:0}
+.sol h3{font-size:15.5px;font-weight:600;margin-bottom:7px;display:flex;align-items:center;gap:9px;flex-wrap:wrap}
+.sol .tag{font-size:10.5px;font-weight:700;color:var(--green-2);border:1px solid var(--line-strong);border-radius:5px;padding:1px 7px}
+.sol p{font-size:13px;color:var(--muted);line-height:1.75}
+.sol p b{color:var(--text);font-weight:600}
 
-/* 预测能力 */
-.perf{border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;max-width:760px;margin:0 auto}
-.perf table{width:100%;border-collapse:collapse;font-size:13.5px}
-.perf th{padding:13px 16px;text-align:left;background:var(--bg-3);color:var(--muted);font-weight:500;font-size:12.5px}
-.perf td{padding:13px 16px;border-top:1px solid var(--line);color:var(--text)}
-.perf td.muted{color:var(--muted)}
-.perf td.hl{color:var(--green-2);font-family:var(--mono);font-weight:600}
-.perf-note{margin-top:12px;font-size:12px;color:var(--muted-2);text-align:center;line-height:1.6}
+/* statement */
+.statement{border:1px solid var(--line-strong);border-radius:var(--radius);
+  background:linear-gradient(180deg,rgba(16,185,129,.09),rgba(16,185,129,.02));padding:30px 32px}
+.statement .t{text-align:center;font-size:12px;letter-spacing:2px;color:var(--green-2);font-family:var(--mono);margin-bottom:14px}
+.statement p{text-align:center;font-size:14.5px;line-height:2;color:var(--text)}
+.statement p .ln{display:block}
+@media (min-width:841px){.statement p .ln{white-space:nowrap}}
 
-/* 版本对比 */
-.cmp{max-width:920px;margin:0 auto;border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;background:var(--bg-2)}
-.cmp-row{display:grid;grid-template-columns:1.5fr 1fr 1fr 1.15fr;align-items:center}
-.cmp-row>div{padding:13px 16px;border-top:1px solid var(--line);border-left:1px solid var(--line);font-size:13px}
-.cmp-row>div:first-child{border-left:none;color:var(--muted)}
-.cmp-row:first-child>div{border-top:none}
-.cmp-head>div{background:var(--bg-3);border-top:none;font-weight:700;font-size:14px;text-align:center;position:relative}
-.cmp-head .cmp-pro{border-left:1px solid var(--line-strong)}
-.cmp-trial,.cmp-free{text-align:center}
-.cmp-pro{background:linear-gradient(180deg,rgba(16,185,129,.10),transparent 70%);text-align:center}
-.cmp-yes{color:var(--green-2);font-weight:700}
-.cmp-no{color:#4A5A75;font-weight:600}
-.cmp-price{font-size:11px;color:var(--muted);font-weight:400;margin-top:3px}
-.cmp-badge{position:absolute;top:-10px;right:16px;background:var(--green);color:#04110B;font-size:10px;font-weight:700;border-radius:6px;padding:3px 8px;letter-spacing:.5px}
-.cmp-tag{font-size:10px;font-weight:700;color:var(--amber);border:1px solid rgba(245,181,68,.4);border-radius:5px;padding:1px 7px;display:inline-block;margin-bottom:2px}
-.cmp-cta-row{padding:18px 16px;display:flex;gap:12px;justify-content:center;flex-wrap:wrap;border-top:1px solid var(--line)!important}
-.cmp-btn{display:inline-flex;align-items:center;gap:7px;border:1px solid var(--line-strong);color:var(--green-2);font-size:13px;font-weight:600;border-radius:10px;padding:10px 20px;transition:background .2s}
-.cmp-btn:hover{background:rgba(16,185,129,.14)}
-.cmp-btn.solid{background:var(--green);color:#04110B;border-color:transparent}
-.cmp-btn.solid:hover{filter:brightness(1.1)}
-.cmp-note{margin-top:14px;text-align:center;font-size:12px;color:var(--muted)}
-.cmp-note b{color:var(--green-2)}
+/* footer */
+footer{border-top:1px solid var(--line-2);padding:40px 0 48px}
+.disc{margin-top:0;padding-top:0;border-top:none;font-size:13.5px;color:#EAF0F8;line-height:1.9}
+.disc b{color:#FFFFFF;font-weight:700}
 
-/* 更新与下载 */
-.ver-wrap{display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:start}
-.ver-card{border:1px solid var(--line);border-radius:var(--radius);background:var(--bg-2);padding:24px}
-.ver-card h3{font-size:16px;font-weight:600;margin-bottom:16px;display:flex;align-items:center;gap:10px}
-.ver-card .v-tag{font-size:11px;font-weight:700;color:#04110B;background:var(--green);border-radius:6px;padding:2px 8px;font-family:var(--mono);letter-spacing:.5px}
-.ver-card ul{list-style:none;display:flex;flex-direction:column;gap:10px}
-.ver-card li{display:flex;gap:10px;font-size:13.5px;color:var(--text)}
-.ver-card li svg{flex:none;margin-top:4px}
-.ver-card li span{color:var(--muted)}
-.ver-card .hint{margin-top:14px;font-size:12px;color:var(--muted)}
-.ver-list{display:flex;flex-direction:column;gap:10px}
-.vrow{display:flex;align-items:center;gap:16px;border:1px solid var(--line);border-radius:12px;background:var(--bg-2);padding:12px 16px}
-.vrow.latest{border-color:var(--line-strong);background:linear-gradient(90deg,rgba(16,185,129,.08),var(--bg-2) 55%)}
-.vrow .ver{font-family:var(--mono);font-weight:700;font-size:14px;color:var(--green-2);width:90px;flex:none}
-.vrow .badge{font-size:10px;font-weight:700;background:var(--green);color:#04110B;border-radius:5px;padding:2px 7px;flex:none;letter-spacing:.5px}
-.vrow .note{flex:1;font-size:13px;color:var(--muted);min-width:0}
-
-/* 联系我们（极简） */
-#contact{padding:48px 0}
-.contact-line{max-width:560px;margin:0 auto;border:1px solid var(--line);border-radius:var(--radius);background:var(--bg-2);padding:26px;text-align:center}
-.contact-line .lb{font-size:13px;color:var(--muted)}
-.contact-line .vl{font-size:18px;color:var(--green-2);font-weight:600;margin-top:6px;word-break:break-all}
-
-/* 反馈按钮与模态框 */
-.feedback-btn{position:fixed;right:22px;bottom:22px;z-index:90;background:linear-gradient(135deg,var(--green),#0E9F6E);color:#04110B;border:none;border-radius:999px;padding:12px 20px;font:600 14px var(--font);cursor:pointer;box-shadow:0 8px 24px rgba(16,185,129,.35);transition:transform .15s}
-.feedback-btn:hover{transform:translateY(-2px)}
-.modal-mask{position:fixed;inset:0;z-index:100;background:rgba(4,10,20,.72);display:none;align-items:center;justify-content:center;padding:20px}
+/* 浮动按钮：常见问题 / 意见反馈 / 联系我们 */
+.fab-wrap{position:fixed;left:22px;top:50%;transform:translateY(-50%);z-index:90;display:flex;flex-direction:column;overflow:hidden;
+  background:rgba(13,22,42,.72);backdrop-filter:blur(14px) saturate(150%);
+  border:1px solid rgba(255,255,255,.08);border-radius:14px;
+  box-shadow:0 18px 44px rgba(0,0,0,.42),inset 0 1px 0 rgba(255,255,255,.06)}
+.fab-wrap::before{content:"";position:absolute;left:0;top:0;bottom:0;width:2px;
+  background:linear-gradient(180deg,rgba(52,211,153,.10),rgba(52,211,153,.62),rgba(52,211,153,.10))}
+.fab{position:relative;display:flex;align-items:center;gap:9px;width:100%;background:none;border:none;cursor:pointer;
+  padding:12px 20px 12px 18px;color:#D3DEEE;font:500 13px/1 var(--font);letter-spacing:.4px;
+  transition:background .18s,color .18s}
+.fab + .fab{border-top:1px solid rgba(255,255,255,.07)}
+.fab svg{width:16px;height:16px;flex:none;color:var(--green-2);opacity:.95;transition:color .18s}
+.fab:hover{background:rgba(16,185,129,.12);color:#FFFFFF}
+.fab:hover svg{color:#7DE8B8}
+.modal-mask{position:fixed;inset:0;z-index:100;background:rgba(4,10,20,.74);display:none;align-items:center;justify-content:center;padding:20px}
 .modal-mask.show{display:flex}
-.modal{background:var(--bg-2);border:1px solid var(--line-strong);border-radius:16px;max-width:440px;width:100%;padding:26px;box-shadow:0 24px 60px rgba(0,0,0,.5)}
-.modal h3{font-size:18px;font-weight:700;margin-bottom:6px;display:flex;justify-content:space-between;align-items:center}
-.modal .close{background:none;border:none;color:var(--muted);font-size:22px;cursor:pointer;line-height:1;padding:0 4px}
-.modal .sub{font-size:12px;color:var(--muted);margin-bottom:16px}
-.mf{margin-bottom:14px}
+.modal{background:var(--bg-2);border:1px solid var(--line-strong);border-radius:16px;max-width:470px;width:100%;padding:24px;max-height:82vh;overflow:auto}
+.modal h3{font-size:17px;font-weight:700;margin-bottom:12px;display:flex;justify-content:space-between;align-items:center;gap:12px}
+.modal .close{background:none;border:none;color:var(--muted);font-size:22px;line-height:1;cursor:pointer}
+.faq-item{border-top:1px solid var(--line-2);padding:12px 0}
+.faq-item:first-of-type{border-top:none;padding-top:0}
+.faq-item h4{font-size:14px;font-weight:600;margin-bottom:6px}
+.faq-item p{font-size:12.5px;color:var(--muted);line-height:1.75}
+.modal .contact-box{text-align:center;padding:12px 0 4px}
+.modal .contact-box .c-main{font-size:26px;font-weight:700;color:var(--green-2);font-family:var(--mono);letter-spacing:1px}
+.modal .contact-box .c-sub{font-size:13px;color:var(--muted);margin-top:6px}
+.modal .contact-box .c-tip{font-size:12px;color:var(--muted-2);margin-top:14px;line-height:1.7}
+.mf{margin-bottom:12px}
 .mf label{display:block;font-size:12px;color:var(--muted);margin-bottom:5px}
 .mf textarea,.mf input{width:100%;background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:11px 13px;color:var(--text);font:400 14px/1.5 var(--font);resize:vertical}
-.mf textarea{min-height:110px}
-.mf input::placeholder,.mf textarea::placeholder{color:#5E7391}
-.modal .submit{width:100%;background:linear-gradient(135deg,var(--green),#0E9F6E);color:#04110B;border:none;border-radius:10px;padding:13px;font:700 15px var(--font);cursor:pointer}
-.modal .submit:hover{filter:brightness(1.1)}
-.modal .ok{text-align:center;padding:26px 10px;font-size:15px;color:var(--green-2)}
-.modal .ok .big{font-size:34px;margin-bottom:8px}
+.mf textarea{min-height:96px}
+.modal .submit{width:100%;background:linear-gradient(135deg,var(--green),#0E9F6E);color:#04110B;border:none;border-radius:10px;padding:12px;font:700 15px var(--font);cursor:pointer}
+.modal .ok{text-align:center;padding:20px 10px;font-size:14.5px;color:var(--green-2)}
+.modal .ok .big{font-size:30px;margin-bottom:8px}
 
-/* 页脚 */
-footer{border-top:1px solid var(--line);padding:28px 0 40px;font-size:12.5px;color:var(--muted)}
-.foot-in{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px}
-.foot-in b{color:var(--text);font-weight:600}
-
-/* 响应式 */
-@media (max-width:900px){
-  .hero .wrap{grid-template-columns:1fr;padding-top:40px;padding-bottom:48px;gap:30px}
-  h1{font-size:30px}
-  .sell{flex-direction:column}
-  .feat-grid{grid-template-columns:1fr 1fr}
-  .ver-wrap{grid-template-columns:1fr}
+@media (max-width:820px){
+  .hero h1{font-size:30px}
+  .pain-grid{grid-template-columns:1fr}
+  .sol{padding:20px}
+  .btn-dl{width:100%;justify-content:center}
   .nav-links{display:none}
-  .cmp-row{grid-template-columns:1fr 1fr}
-  .cmp-row .cmp-feat{grid-column:1/-1;background:var(--bg-3);font-weight:600;color:var(--text);border-left:none;border-top:1px solid var(--line)}
-  .cmp-row:first-child .cmp-feat{display:none}
-  .cmp-head{display:none}
-  .cmp-trial,.cmp-free,.cmp-pro{border-left:none!important}
-}
-@media (max-width:560px){
-  .feat-grid{grid-template-columns:1fr}
-  .btns .btn-dl,.btns .btn-ghost,.btns .btn-mac{width:100%;justify-content:center}
-}
-/* ========== 2026-09-05 · 视觉精修 + 下载区重排（皮肤 v2）========== */
-:root{
-  --bg:#070C18;--bg-2:#0C1424;--bg-3:#101B30;
-  --line:rgba(148,163,184,.14);--line-strong:rgba(52,211,153,.34);
-  --green:#0EA575;--green-2:#38D39F;--green-soft:rgba(14,165,117,.14);
-  --radius:16px;
-}
-html{scroll-behavior:smooth}
-section,[id]{scroll-margin-top:72px}
-body{
-  background:
-    radial-gradient(1100px 520px at 88% -10%,rgba(14,165,117,.10),transparent 60%),
-    radial-gradient(900px 460px at -12% 20%,rgba(56,189,248,.055),transparent 55%),
-    var(--bg);
-  letter-spacing:.1px;
-}
-.wrap{max-width:1060px}
-nav{background:rgba(7,12,24,.8)}
-h1{font-size:clamp(32px,4.1vw,46px);letter-spacing:.4px}
-h1 .g{background:linear-gradient(92deg,var(--green-2),#86E0B0)}
-section{padding:68px 0}
-.sec-h{font-size:clamp(23px,2.6vw,30px)}
-.sell{gap:10px;margin:22px 0 0}
-.sell .s{background:linear-gradient(180deg,rgba(16,27,48,.6),rgba(10,16,28,.5));border-radius:12px}
-.sell .s:hover{border-color:var(--line-strong)}
-/* ---- 首屏下载面板：Windows / macOS 清晰二选一 ---- */
-.os-panel{margin-top:26px;max-width:560px;border:1px solid var(--line);border-radius:18px;background:linear-gradient(180deg,rgba(17,28,52,.9),rgba(9,15,27,.94));box-shadow:0 20px 52px rgba(0,0,0,.35);overflow:hidden}
-.os-row{display:flex;align-items:stretch;border-bottom:1px solid var(--line)}
-.os-row:last-of-type{border-bottom:none}
-.os-badge{flex:none;width:56px;display:flex;align-items:center;justify-content:center;color:var(--green-2);border-right:1px solid var(--line);background:rgba(255,255,255,.015)}
-.os-row.mac .os-badge{color:#B4C2DA}
-.os-cta{flex:1;min-width:0;display:flex;align-items:center;gap:12px;padding:17px 18px;color:var(--text);transition:background .18s,color .18s}
-.os-cta span{font-size:16px;font-weight:700;line-height:1.32}
-.os-cta .meta{display:block;font-weight:500;font-size:12px;color:var(--muted);margin-top:2px;line-height:1.35}
-.os-row.win:hover{background:rgba(14,165,117,.08)}
-.os-row.mac:hover{background:rgba(148,163,184,.07)}
-.os-cta::after{content:"↓";flex:none;font-size:15px;color:var(--green-2);margin-left:auto;transition:transform .18s}
-.os-row.mac .os-cta::after{color:#B4C2DA}
-.os-row:hover .os-cta::after{transform:translateY(3px)}
-/* 中和旧按钮样式（.btn-dl/.btn-mac 现在作为整行点击区） */
-.os-cta.btn-dl,.os-cta.btn-mac{background:transparent;box-shadow:none;border:none;color:var(--text)}
-.os-cta.btn-dl:hover,.os-cta.btn-mac:hover{transform:none;border-color:transparent;background:transparent}
-.os-foot{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:8px 14px;padding:11px 18px;font-size:12.5px;color:var(--muted);background:rgba(5,9,17,.55)}
-.os-foot a{color:var(--green-2);font-weight:600}
-.os-foot a:hover{text-decoration:underline}
-.os-vers{white-space:nowrap;opacity:.9}
-/* ---- 通用精修：卡片 / 表格 / 版本行 ---- */
-.feat{border-color:var(--line);background:linear-gradient(180deg,rgba(16,27,48,.92),rgba(10,16,28,.72));transition:transform .18s,border-color .18s,box-shadow .18s}
-.feat:hover{transform:translateY(-2px);border-color:var(--line-strong);box-shadow:0 14px 34px rgba(0,0,0,.25)}
-.perf,.cmp,.ver-card{box-shadow:0 16px 40px rgba(0,0,0,.22)}
-.vrow{transition:border-color .18s,background .18s}
-.vrow:not(.latest):hover{border-color:var(--line-strong)}
-.vrow.latest{background:linear-gradient(90deg,rgba(16,185,129,.1),var(--bg-2) 60%)}
-.cmp-btn,.cmp-btn.solid{transition:transform .15s,filter .15s}
-.cmp-btn.solid:hover{transform:translateY(-1px)}
-.panel{box-shadow:0 24px 60px rgba(0,0,0,.5),0 0 44px rgba(16,185,129,.09)}
-/* ---- 焦点可达性 & 动效偏好 ---- */
-a:focus-visible,button:focus-visible{outline:2px solid var(--green-2);outline-offset:2px;border-radius:6px}
-@media (prefers-reduced-motion:reduce){
-  *,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}
-}
-@media (max-width:640px){
-  .os-badge{width:46px}
-  .os-cta{padding:15px 14px}
-  .os-foot{flex-direction:column;align-items:flex-start}
-  .sell .s b{font-size:13.5px}
-}
-/* 更新与下载 · macOS 版本卡 */
-.ver-card.mac-card{margin-top:16px;border-color:rgba(148,163,184,.32);background:linear-gradient(180deg,rgba(18,30,54,.92),rgba(10,16,28,.85))}
-.ver-card.mac-card .v-tag{background:rgba(148,163,184,.22);color:var(--text)}
-.mac-card .mac-links{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}
-.mac-card .mac-links .cmp-btn{font-size:13px;padding:9px 14px;border-radius:10px}
-@media (max-width:560px){
-  .mac-card .mac-links{flex-direction:column}
-  .mac-card .mac-links .cmp-btn{justify-content:center}
+  .fab-wrap{left:12px}
+  .fab{padding:10px 14px 10px 12px;font-size:12px}
 }
 </style>
 </head>
 <body>
 
-<!-- 顶部导航 -->
 <nav>
   <div class="wrap nav-in">
-    <a class="brand" href="#top"><span class="logo">碳</span>碳市场分析平台<small>官方下载</small></a>
+    <a class="brand" href="#top"><span class="logo">碳</span>碳市场分析平台</a>
     <div class="nav-links">
-      <a href="#top">首页</a>
-      <a href="#features">功能</a>
-      <a href="#update">下载</a>
-      <a href="#contact">联系我们</a>
+      <a href="#pain">研究难点</a>
+      <a href="#solve">它能做什么</a>
+      <a href="#notice">使用定位</a>
     </div>
-    <a class="nav-cta" href="https://carbontrading-1442764409.cos.ap-guangzhou.myqcloud.com/CarbonPlatform_Setup_1.0.4-trial.exe">⬇ 立即下载</a>
   </div>
 </nav>
 
-<!-- 内测提示 -->
-<div class="beta-bar"><b>内测版 V1.0.4-trial</b> · 免费试用 30 天，到期需激活（普通版 / 专业版）</div>
-
-<!-- Hero -->
 <header class="hero" id="top">
   <div class="wrap">
-    <div>
-      <span class="h-tag"><span class="pulse"></span>Windows · macOS 桌面工具 · 数据自动更新</span>
-      <h1>让碳价研判<br>快人一步</h1>
-      <p class="h-sub">CEA / CCER 双市场行情 · <b>智能预测</b> · <b>履约策略提醒</b></p>
+    <span class="eyebrow">面向碳市场学习与研究 · Windows 桌面工具</span>
+    <h1>把碳市场的复杂<br>变成看得懂的判断</h1>
+    <p class="sub"><span class="ln">CEA / CCER 双市场行情 · 走势预测 · 履约节奏辅助</span><span class="ln">帮你在研究碳市场政策与规律时，把数据和方法理成一条清晰的线</span></p>
 
-      <div class="sell">
-        <div class="s"><b><span class="dot">✓</span>行情自动更新</b><span>交易日数据自动入库，收盘即最新</span></div>
-        <div class="s"><b><span class="dot">✓</span>数据本地加密</b><span>AES-256 加密存储，隐私不上云</span></div>
-        <div class="s"><b><span class="dot">✓</span>履约智提醒</b><span>把握履约窗口与资产处置时机</span></div>
+    <div class="dl-pair">
+      <div class="dl-item">
+        <a class="btn-dl" id="mainDl" href="#" data-probe>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="M7 10l5 5 5-5"/><path d="M12 15V3"/></svg>
+          下载 Windows 版
+        </a>
+        <p class="dl-cap">免费试用 1 天 · 无需注册 · 数据全部保存在本机</p>
       </div>
-
-      <div class="os-panel">
-        <div class="os-row win">
-          <span class="os-badge" aria-hidden="true">
-            <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="4.5" y="4.5" width="6.6" height="6.6" rx="1.5"/><rect x="12.9" y="4.5" width="6.6" height="6.6" rx="1.5"/><rect x="4.5" y="12.9" width="6.6" height="6.6" rx="1.5"/><rect x="12.9" y="12.9" width="6.6" height="6.6" rx="1.5"/></svg>
-          </span>
-          <a class="btn-dl os-cta" href="#" data-dl="0">
-            <span>下载 Windows 版<span class="meta">加载最新版本信息中…</span></span>
-          </a>
-        </div>
-        <div class="os-row mac">
-          <span class="os-badge" aria-hidden="true">
-            <svg width="19" height="19" viewBox="0 0 24 24" fill="currentColor"><path d="M17.05 12.54c-.03-2.7 2.2-3.99 2.3-4.06-1.25-1.83-3.2-2.08-3.9-2.1-1.66-.17-3.23.98-4.07.98-.84 0-2.15-.95-3.53-.92-1.82.03-3.5 1.06-4.43 2.69-1.9 3.28-.48 8.15 1.36 10.82.9 1.3 1.97 2.77 3.38 2.72 1.36-.05 1.87-.88 3.52-.88 1.64 0 2.1.88 3.53.85 1.46-.03 2.38-1.32 3.27-2.63 1.04-1.5 1.46-2.95 1.48-3.03-.03-.02-2.82-1.08-2.85-4.24zM14.4 4.6c.75-.9 1.26-2.16 1.12-3.41-1.08.04-2.38.72-3.16 1.62-.7.8-1.3 2.08-1.14 3.3 1.2.1 2.44-.62 3.18-1.51z"/></svg>
-          </span>
-          <a class="btn-mac os-cta" href="https://carbontrading-1442764409.cos.ap-guangzhou.myqcloud.com/%E7%A2%B3%E5%B8%82%E5%9C%BA%E5%88%86%E6%9E%90%E5%B9%B3%E5%8F%B0_1.0.0-Mac.dmg">
-            <span>下载 Mac 版<span class="meta">v1.0.0-Mac · macOS 12+ · Apple 芯片 · 首次发布 · 试用 15 天</span></span>
-          </a>
-        </div>
-        <div class="os-foot">
-          <span>使用 Intel 芯片的 Mac？<a href="https://carbontrading-1442764409.cos.ap-guangzhou.myqcloud.com/%E7%A2%B3%E5%B8%82%E5%9C%BA%E5%88%86%E6%9E%90%E5%B9%B3%E5%8F%B0_1.0.0-Mac-intel.dmg">点此下载 Intel 版</a></span>
-          <a class="os-vers" href="#update">下载与更新 →</a>
-        </div>
-      </div>
-      <div class="aux">
-        <span>一键安装即用</span><span>行情数据自动更新</span><span>本地加密存储</span>
+      <div class="dl-item">
+        <a class="btn-ghost" id="mockDl" href="#" data-probe>
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="M7 10l5 5 5-5"/><path d="M12 15V3"/></svg>
+          下载模拟数据包
+        </a>
+        <p class="dl-cap">还没有您自己的数据？可以先用它把软件的功能和操作完整走一遍。</p>
       </div>
     </div>
 
-    <!-- 行情面板示意 -->
-    <div class="panel">
-      <div class="p-head"><b><span class="mini"></span>CEA 碳价 · 日线</b><span>价格单位：元/吨</span></div>
-      <svg viewBox="0 0 320 148" width="100%" role="img" aria-label="CEA 碳价日线界面示意">
-        <g stroke="rgba(148,163,184,.08)">
-          <line x1="8" y1="44" x2="312" y2="44"/><line x1="8" y1="70" x2="312" y2="70"/>
-          <line x1="8" y1="96" x2="312" y2="96"/><line x1="8" y1="122" x2="312" y2="122"/>
-        </g>
-        <g opacity=".4">
-          <rect x="15.5" y="82" width="2" height="12" fill="#F87171"/><rect x="39.5" y="82" width="2" height="11" fill="#F87171"/>
-          <rect x="63.5" y="84" width="2" height="12" fill="#10B981"/><rect x="87.5" y="86" width="2" height="12" fill="#F87171"/>
-          <rect x="111.5" y="87" width="2" height="14" fill="#10B981"/><rect x="135.5" y="90" width="2" height="12" fill="#F87171"/>
-          <rect x="159.5" y="91" width="2" height="13" fill="#10B981"/><rect x="183.5" y="93" width="2" height="11" fill="#F87171"/>
-          <rect x="207.5" y="94" width="2" height="14" fill="#10B981"/><rect x="231.5" y="98" width="2" height="11" fill="#F87171"/>
-          <rect x="255.5" y="99" width="2" height="15" fill="#10B981"/><rect x="279.5" y="102" width="2" height="13" fill="#F87171"/>
-        </g>
-        <g>
-          <rect x="12" y="90" width="8" height="4" fill="#10B981" opacity=".9"/><rect x="60" y="87" width="8" height="6" fill="#10B981" opacity=".9"/>
-          <rect x="108" y="90" width="8" height="7" fill="#10B981" opacity=".9"/><rect x="156" y="94" width="8" height="6" fill="#10B981" opacity=".9"/>
-          <rect x="204" y="97" width="8" height="7" fill="#10B981" opacity=".9"/><rect x="252" y="102" width="8" height="8" fill="#10B981" opacity=".9"/>
-        </g>
-        <path d="M16 90 L40 87 L64 93 L88 90 L112 97 L136 94 L160 100 L184 97 L208 104 L232 102 L256 110 L280 106" fill="none" stroke="#34D399" stroke-width="1.6" opacity=".9"/>
-        <path d="M280 106 L312 92" fill="none" stroke="#A3E635" stroke-width="1.8" stroke-dasharray="4 4"/>
-        <circle cx="280" cy="106" r="3" fill="#A3E635"/>
-        <text x="306" y="86" fill="#A3E635" font-size="10" text-anchor="end">预测</text>
-        <g opacity=".3">
-          <rect x="13" y="124" width="6" height="15" fill="#F87171"/><rect x="37" y="125" width="6" height="14" fill="#F87171"/>
-          <rect x="61" y="123" width="6" height="16" fill="#10B981"/><rect x="85" y="125" width="6" height="14" fill="#F87171"/>
-          <rect x="109" y="121" width="6" height="18" fill="#10B981"/><rect x="133" y="125" width="6" height="14" fill="#F87171"/>
-          <rect x="157" y="122" width="6" height="17" fill="#10B981"/><rect x="181" y="126" width="6" height="13" fill="#F87171"/>
-          <rect x="205" y="120" width="6" height="19" fill="#10B981"/><rect x="229" y="126" width="6" height="13" fill="#F87171"/>
-          <rect x="253" y="118" width="6" height="21" fill="#10B981"/><rect x="277" y="126" width="6" height="13" fill="#F87171"/>
-        </g>
-      </svg>
-      <div class="p-note"><em>界面示意</em><span>CEA 全国碳排放权配额 · 收盘价 &amp; 成交量</span></div>
+    <div class="chips">
+      <span class="chip">版本 <b id="chipVer">V1.1.0</b></span>
+      <span class="chip">大小 <b>114.16 MB</b></span>
+      <span class="chip">更新 <b>2026-10-01</b></span>
     </div>
+    <p class="mac-hint"><b>macOS 版</b>正在打磨中，敬请期待</p>
   </div>
 </header>
 
-<!-- 功能与安全 -->
-<section id="features">
+<section id="pain">
   <div class="wrap">
-    <div class="sec-h">功能与安全</div>
-    <div class="sec-sub">从行情采集到智能研判，一站完成 · 数据全程本地保护</div>
-    <div class="feat-grid">
-      <div class="feat"><h3><span class="ic">📈</span>双市场行情看板</h3><p>CEA 全国碳配额 + CCER 自愿减排双市场，<b>量价同框</b>展示，收盘价、成交量一手掌握。</p></div>
-      <div class="feat"><h3><span class="ic">⏰</span>履约智提醒</h3><p>履约冲刺期信号增强、CCER 价差软约束标注，帮助把握<b>履约窗口</b>与资产处置时机。</p></div>
-      <div class="feat"><h3><span class="ic">🔄</span>数据自动更新</h3><p>交易日行情自动入库，<b>收盘即最新</b>，无需手工维护，打开即用。</p></div>
-      <div class="feat"><h3><span class="ic">🗄️</span>行情来源</h3><p>行情信息来自<b>交易所公开发布</b>的交易数据，平台自动整理入库。</p></div>
-      <div class="feat"><h3><span class="ic">🔐</span>本地加密存储</h3><p>数据全部存储在本机，<b>AES-256 加密</b>且密钥绑定本机，拷贝到其他电脑也无法解密。</p></div>
-      <div class="feat"><h3><span class="ic">🔑</span>访问与授权保护</h3><p>启动需<b>访问密码</b>登录、退出即失效；授权激活码绑定<b>机器指纹</b>，防止复制传播。</p></div>
-    </div>
-  </div>
-</section>
-
-<!-- 预测能力 -->
-<section>
-  <div class="wrap">
-    <div class="sec-h">预测能力有多准</div>
-    <div class="sec-sub">样本外滚动回归测试结果（内部数据，仅供参考）</div>
-    <div class="perf">
-      <table>
-        <tr><th>市场</th><th>1 步预测误差</th><th>多步预测误差</th><th>说明</th></tr>
-        <tr><td>CEA</td><td class="hl">≈ 0.2%</td><td class="hl">≈ 1.6%</td><td class="muted">智能择优，自动适配不同行情阶段</td></tr>
-        <tr><td>CEA</td><td class="hl">≈ 0.2%</td><td class="muted">—</td><td class="muted">近期稳定表现最佳</td></tr>
-        <tr><td>CCER</td><td class="hl">≈ 2.3%</td><td class="muted">—</td><td class="muted">CCER 波动更大，预测难度更高</td></tr>
-      </table>
-    </div>
-    <p class="perf-note">误差以 MAPE（平均绝对百分比误差）衡量，来自平台每周进行的样本外滚动回归。碳价短期存在随机波动，预测工具定位为"辅助研判"，不构成投资建议。</p>
-  </div>
-</section>
-
-<!-- 更新与下载 -->
-<section id="update">
-  <div class="wrap">
-    <div class="sec-h">更新与下载</div>
-    <div class="sec-sub">当前版本与下载（Windows / macOS）</div>
-    <div class="ver-wrap">
-      <div class="ver-card">
-        <h3><span class="v-tag">V1.0.4-trial</span> 本次更新</h3>
-        <ul>
-          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg><div>行情更新更稳了：<span>CEA、CCER 两条行情线"各走各的"、互不拖累。某一条数据源官网临时繁忙时，另一条照常更新到最新，不再像以前那样"一卡就整轮数据都不动"</span></div></li>
-          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg><div>该更新的数据都能正常入库：<span>行情日数据照常补齐，周末、节假日也不再误判</span></div></li>
-          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg><div>登录前页面更干净：<span>未登录时只显示"暂无行情数据"，不再出现内部文件提示，界面干净也更安全</span></div></li>
-          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg><div>旧版用户自动升级：<span>v1.0.3-trial 及更早版本打开软件会收到更新提示，点击覆盖安装即可（数据不丢）</span></div></li>
-        </ul>
-        <p class="hint">安装前建议关闭旧版本平台，安装过程如提示覆盖即可（数据不丢）。</p>
+    <div class="s-label">01 / 研究难点</div>
+    <div class="s-h">研究碳市场，常被这几件事卡住</div>
+    <p class="s-sub">数据零散、走势难判、履约没底、方法难沉淀——这些困难在研究过程中反复出现。</p>
+    <div class="pain-grid">
+      <div class="pain">
+        <div class="no">01</div>
+        <h3>行情分散、口径不一</h3>
+        <p>CEA 与 CCER 的成交信息散落在不同来源、格式各异，手工整理既费时又容易出错，很难拼成一段连续、可比的时间序列。</p>
       </div>
-      <div>
-        <div class="ver-list" id="verList"><!-- 由版本清单渲染 --></div>
-        <div class="ver-card mac-card">
-          <h3><span class="v-tag">macOS</span> Mac 版 v1.0.0-Mac · 首次发布</h3>
-          <ul>
-            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg><div>栏目秒回：<span>数据分析、算法引擎预测秒出结果，口径与既往一致</span></div></li>
-            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg><div>安装即内置官方历史行情：<span>CEA 2021-07 至今 / CCER 2025-03 至今，首次打开即可用</span></div></li>
-            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg><div>数据本地加密 · 启动自愈：<span>试用 15 天，到期需激活</span></div></li>
-          </ul>
-          <p class="hint">Apple 芯片版 180.4 MB · Intel 版 183.0 MB</p>
-          <div class="mac-links">
-            <a class="cmp-btn" href="https://carbontrading-1442764409.cos.ap-guangzhou.myqcloud.com/%E7%A2%B3%E5%B8%82%E5%9C%BA%E5%88%86%E6%9E%90%E5%B9%B3%E5%8F%B0_1.0.0-Mac.dmg">⬇ 下载 Apple 芯片版</a>
-            <a class="cmp-btn" href="https://carbontrading-1442764409.cos.ap-guangzhou.myqcloud.com/%E7%A2%B3%E5%B8%82%E5%9C%BA%E5%88%86%E6%9E%90%E5%B9%B3%E5%8F%B0_1.0.0-Mac-intel.dmg">⬇ 下载 Intel 版</a>
-          </div>
+      <div class="pain">
+        <div class="no">02</div>
+        <h3>走势看不透，把握说不清</h3>
+        <p>碳价同时受政策发布、履约周期、能源价格与市场情绪影响，单看 K 线难以判断短期方向，更难说清"有多大把握"。</p>
+      </div>
+      <div class="pain">
+        <div class="no">03</div>
+        <h3>履约节奏缺量化参考</h3>
+        <p>临近履约期，配额缺口多少、政策口径下的豁免怎么算、什么时候安排更合适，往往只能凭经验估计。</p>
+      </div>
+      <div class="pain">
+        <div class="no">04</div>
+        <h3>分析流程零散、方法难沉淀</h3>
+        <p>靠 Excel 手工做图、做表、写报告，一次做完下次还得重来，方法无法复用，研究结论也难以横向比较。</p>
+      </div>
+      <div class="pain wide">
+        <div class="no">05</div>
+        <h3>数据敏感，不敢上云</h3>
+        <p>行情与持仓数据较为敏感，放到云端不放心；放在本地，又担心文件被拷贝带走。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="solve">
+  <div class="wrap">
+    <div class="s-label">02 / 它能做什么</div>
+    <div class="s-h">这些难题，它一件件帮你理顺</div>
+    <p class="s-sub">对应上面的每一项困难，软件都给出了可操作的抓手。</p>
+    <div class="sol-grid">
+      <div class="sol">
+        <div class="ic">📈</div>
+        <div class="body">
+          <h3>双市场行情，一屏看全 <span class="tag">对应 01</span></h3>
+          <p><b>CEA 与 CCER 量价同框</b>，K 线与常用技术指标开箱即用；数据统一格式入库后，可形成连续可比的时间序列，省去反复整理表格的功夫。</p>
+        </div>
+      </div>
+      <div class="sol">
+        <div class="ic">🔮</div>
+        <div class="body">
+          <h3>走势预测，给出把握区间 <span class="tag">对应 02</span></h3>
+          <p>不仅给出一条预测线，还给出<b>不确定区间</b>——区间越宽表示把握越小；每张图配通俗说明，便于判断与讨论，而不是只给一个"看着很准"的数字。</p>
+        </div>
+      </div>
+      <div class="sol">
+        <div class="ic">⏰</div>
+        <div class="body">
+          <h3>履约缺口校准与节奏参考 <span class="tag">对应 03</span></h3>
+          <p>按制度口径（缺口率超过 20% 时可按规定补发配额至 80%）<b>自动显示豁免前后结果</b>，并结合履约窗口给出节奏参考，让分析有据可依。</p>
+        </div>
+      </div>
+      <div class="sol">
+        <div class="ic">🧮</div>
+        <div class="body">
+          <h3>从分析到报告的一条流程 <span class="tag">对应 04</span></h3>
+          <p>行情看板、数据分析、算法引擎、企业管理、报告生成等模块串成完整流程，<b>把零散的 Excel 手工变成可复用的分析步骤</b>，结论可留存、可对比。</p>
+        </div>
+      </div>
+      <div class="sol">
+        <div class="ic">🔒</div>
+        <div class="body">
+          <h3>本地加密，数据不出本机 <span class="tag">对应 05</span></h3>
+          <p>数据库<b>整库加密</b>、密钥与本机绑定，每次启动需密码；文件即使被拷贝到其他电脑，也无法解密读取，隐私不上云。</p>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- 联系我们（极简） -->
-<section id="contact">
+<section id="notice">
   <div class="wrap">
-    <div class="sec-h">联系我们</div>
-    <div class="contact-line">
-      <div class="lb">快捷反馈</div>
-      <div class="vl">点击右下角「📮 意见反馈」直接留言，我们会认真查看并回复。</div>
+    <div class="s-label">03 / 使用定位</div>
+    <div class="s-h">它是一款学习与研究工具</div>
+    <p class="s-sub">请在使用前了解它的边界。</p>
+    <div class="statement">
+      <div class="t">IMPORTANT NOTICE</div>
+      <p><span class="ln">本软件是面向碳市场学习与研究的辅助工具，用于<b>学习、研究碳市场的政策与规律</b>。</span><span class="ln">软件内数据由您自行导入，导入数据的来源合规性与使用后果由您自行负责。</span></p>
     </div>
   </div>
 </section>
 
-<!-- 意见反馈 -->
-<button class="feedback-btn" id="fbBtn">📮 意见反馈</button>
+<footer>
+  <div class="wrap">
+    <div class="disc">
+      <b>免责与合规声明：</b>本软件不内置、不转售、不主动分发任何交易所或第三方数据，也不替用户抓取数据；软件内数据由用户自行导入，导入数据的来源合规性与使用后果由用户自行负责。文中所有行情展示与预测结果均为学习研究之用，不构成任何投资、交易或履约决策建议。
+    </div>
+  </div>
+</footer>
+
+<div class="fab-wrap">
+  <button class="fab" id="faqBtn">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M9.6 9.1a2.5 2.5 0 1 1 3.3 2.4c-.5.2-.9.7-.9 1.2v.4"/><path d="M12 16.6h.01"/></svg>
+    <span>常见问题</span>
+  </button>
+  <button class="fab primary" id="fbBtn">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M21.5 2.5 10.8 13.2"/><path d="M21.5 2.5 14.8 21.5l-4-9.3-9.3-4Z"/></svg>
+    <span>意见反馈</span>
+  </button>
+  <button class="fab" id="ctBtn">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.4-1.2a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2Z"/></svg>
+    <span>联系我们</span>
+  </button>
+</div>
+
+<div class="modal-mask" id="ctMask">
+  <div class="modal">
+    <h3>联系我们 <button class="close" id="ctClose" aria-label="关闭">×</button></h3>
+    <div class="contact-box">
+      <div class="c-main">15500098352</div>
+      <div class="c-sub">吴先生 · 咨询与激活</div>
+      <div class="c-tip">软件安装使用、试用与激活码、商务合作，欢迎来电或短信联系。</div>
+    </div>
+  </div>
+</div>
+
+<div class="modal-mask" id="faqMask">
+  <div class="modal">
+    <h3>常见问题 <button class="close" id="faqClose" aria-label="关闭">×</button></h3>
+    <div class="faq-item"><h4>怎么安装？</h4><p>下载安装包后双击运行，按提示完成安装；首次启动设置一个访问密码即可。</p></div>
+    <div class="faq-item"><h4>试用有什么限制？</h4><p>免费试用 1 天，试用期内全部功能开放，可导入数据完整体验；试用期内不支持导出，导出需购买后使用。</p></div>
+    <div class="faq-item"><h4>软件内有数据吗？</h4><p>没有。软件本体不含任何内置数据，也不会替您抓取数据；数据由您自行导入，首次体验可先下载页面上方的模拟数据包。</p></div>
+    <div class="faq-item"><h4>我的数据安全吗？</h4><p>数据全部保存在本机，数据库整库加密、密钥与本机绑定；文件即使被拷贝到其他电脑，也无法解密读取。</p></div>
+    <div class="faq-item"><h4>怎么激活？</h4><p>打开软件「关于 / 授权」页面，把显示的机器码发给页脚的联系方式，收到激活码后输入即可。</p></div>
+    <div class="faq-item"><h4>怎么卸载？</h4><p>在 Windows「设置 → 应用」中找到本软件，选择卸载即可。</p></div>
+  </div>
+</div>
+
 <div class="modal-mask" id="fbMask">
   <div class="modal">
     <h3>意见反馈 <button class="close" id="fbClose" aria-label="关闭">×</button></h3>
-    <div class="sub">内测期间反馈改进最快，感谢你的建议！</div>
     <form id="fbForm">
-      <input type="text" name="_honey" value="" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden;opacity:0">
-      <div class="mf">
-        <label>你的建议或遇到的问题</label>
-        <textarea name="feedback" required placeholder="例如：希望增加 XX 功能 / 某处操作不便 / 发现一个 bug…"></textarea>
-      </div>
-      <div class="mf">
-        <label>联系方式（选填，便于跟进）</label>
-        <input name="contact" placeholder="手机号 / 微信 / 邮箱">
-      </div>
+      <div class="mf"><label>你的建议或遇到的问题</label><textarea name="feedback" required placeholder="例如：希望增加 XX 功能 / 某处操作不便 / 发现一个问题…"></textarea></div>
+      <div class="mf"><label>联系方式（选填）</label><input name="contact" placeholder="手机号 / 微信 / 邮箱"></div>
       <button class="submit" type="submit">提交反馈</button>
     </form>
     <div class="ok" id="fbOk" style="display:none"></div>
   </div>
 </div>
 
-<footer>
-  <div class="wrap foot-in">
-    <span><b>碳市场分析平台</b> · 当前版本：Windows <b id="curVer">V1.0.4-trial</b> · macOS <b>1.0.0-Mac</b></span>
-    <span>© 2026 · 数据仅供参考，不构成投资建议</span>
-  </div>
-</footer>
-
 <script>
-/* ============================================================
-   版本清单 · 集中配置（以后发布新版本，只改这里）
-   ============================================================ */
-var VERSIONS = [
-  { v:"1.0.4-trial", file:"https://carbontrading-1442764409.cos.ap-guangzhou.myqcloud.com/CarbonPlatform_Setup_1.0.4-trial.exe", note:"自动更新更稳 · 双线行情互不拖累 · 数据补全更准 · 登录页更干净 · 试用30天", size:"145.2 MB", latest:true },
-  { v:"1.0.3-trial", file:"https://carbontrading-1442764409.cos.ap-guangzhou.myqcloud.com/CarbonPlatform_Setup_1.0.3-trial.exe", note:"历史版本 · 内测提速版", size:"145.2 MB" },
-  { v:"1.0.2-trial", file:"https://carbontrading-1442764409.cos.ap-guangzhou.myqcloud.com/CarbonPlatform_Setup_1.0.2-trial.exe", note:"历史版本 · 启动自愈修复版", size:"145.2 MB" }
-];
-
-/* ---------- 渲染版本列表 ---------- */
+/* 下载配置 · 只改这一处 */
+var DL = {
+  file: "https://carbontrading-1442764409.cos.ap-guangzhou.myqcloud.com/CarbonPlatform_Setup_1.1.0-RETAIL.exe",
+  demo: "https://carbontrading-1442764409.cos.ap-guangzhou.myqcloud.com/CarbonPlatform_DemoData.zip"
+};
 (function () {
-  var list = document.getElementById("verList");
-  var html = "";
-  for (var i = 0; i < VERSIONS.length; i++) {
-    var it = VERSIONS[i];
-    var latest = it.latest ? ' latest' : '';
-    var badge = it.latest ? '<span class="badge">最新</span>' : '';
-    var note = it.note || "历史版本";
-    var size = it.size ? (" · " + it.size) : "";
-    html +=
-      '<div class="vrow' + latest + '" data-idx="' + i + '">' +
-        '<span class="ver">v' + it.v + '</span>' +
-        badge +
-        '<span class="note">' + note + size + '</span>' +
-      '</div>';
-  }
-  list.innerHTML = html;
-
-  /* 更新主按钮版本信息 */
-  var top = VERSIONS[0];
-  document.querySelector(".btn-dl").innerHTML =
-    '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="M7 10l5 5 5-5"/><path d="M12 15V3"/></svg>' +
-    '<span>下载内测版 V' + top.v + '<span class="meta">' + (top.size ? top.size + " · " : "") + 'Windows 10/11 · 试用 30 天</span></span>';
-  document.querySelector(".btn-dl").setAttribute("href", top.file);
-  document.querySelector(".nav-cta").setAttribute("href", top.file);
-  document.getElementById("curVer").textContent = "V" + top.v;
-
-  /* 下载前探测：安装包未上传时给出提示 */
-  document.querySelectorAll("[data-dl]").forEach(function (a) {
-    a.addEventListener("click", function (e) {
-      var it = VERSIONS[Number(a.getAttribute("data-dl"))];
-      if (!it) return;
-      var probe = new XMLHttpRequest();
-      probe.open("HEAD", it.file, true);
-      probe.onreadystatechange = function () {
-        if (probe.readyState === 4 && probe.status === 404) {
-          e.preventDefault();
-          alert("提示：该版本安装包尚未上传，请联系维护人员。");
-        }
+  var a = document.getElementById("mainDl");
+  if (a) a.setAttribute("href", DL.file);
+  var m = document.getElementById("mockDl");
+  if (m) m.setAttribute("href", DL.demo);
+  document.querySelectorAll("[data-probe]").forEach(function (el) {
+    el.addEventListener("click", function (e) {
+      var url = el.getAttribute("href");
+      if (!url || url.charAt(0) === "#") return;
+      var p = new XMLHttpRequest();
+      p.open("HEAD", url, true);
+      p.onreadystatechange = function () {
+        if (p.readyState === 4 && p.status === 404) { e.preventDefault(); alert("提示：安装包尚未上传完成，请稍后再试。"); }
       };
-      probe.send();
+      p.send();
     });
   });
 })();
 
-/* ---------- 意见反馈（FormSubmit，用户提交→实时转发至管理员邮箱） ---------- */
+/* 常见问题 / 意见反馈 */
 (function () {
-  var btn = document.getElementById("fbBtn");
-  var mask = document.getElementById("fbMask");
-  var close = document.getElementById("fbClose");
-  var form = document.getElementById("fbForm");
-  var ok = document.getElementById("fbOk");
-  if (!btn || !mask) return;
-  /* ================================================================
-   * 意见反馈接收通道（FormSubmit · 免注册）
-   * ENDPOINT 固定为：https://formsubmit.co/ajax/<收件邮箱>
-   * 每条用户反馈提交后，FormSubmit 会实时转发到该邮箱；
-   * 首次提交时收件邮箱会收到一封激活邮件，点击激活后即持续生效。
-   * 说明：收件邮箱会公开在页面里；如日后担心收到垃圾信，可在
-   * FormSubmit 后台(或 _captcha 参数)改用其 Turnstile 验证。
-   * ================================================================ */
-  var ENDPOINT = "https://formsubmit.co/ajax/18610804830@163.com";
-  btn.addEventListener("click", function () { mask.classList.add("show"); });
-  close.addEventListener("click", function () { mask.classList.remove("show"); });
-  mask.addEventListener("click", function (e) { if (e.target === mask) mask.classList.remove("show"); });
+  function bind(btnId, maskId, closeId) {
+    var b = document.getElementById(btnId), m = document.getElementById(maskId), c = document.getElementById(closeId);
+    if (!b || !m) return;
+    b.addEventListener("click", function () { m.classList.add("show"); });
+    if (c) c.addEventListener("click", function () { m.classList.remove("show"); });
+    m.addEventListener("click", function (e) { if (e.target === m) m.classList.remove("show"); });
+  }
+  bind("faqBtn", "faqMask", "faqClose");
+  bind("fbBtn", "fbMask", "fbClose");
+  bind("ctBtn", "ctMask", "ctClose");
+
+  var form = document.getElementById("fbForm"), ok = document.getElementById("fbOk");
+  if (!form) return;
+  /* 腾讯云云函数（函数 URL）——收到留言即转发到 18610804830@163.com */
+  var ENDPOINT = "https://1442764409-1bqyik4taz.ap-guangzhou.tencentscf.com/fb-8f3a1c7d";
   form.addEventListener("submit", function (e) {
     e.preventDefault();
-    var fd = new FormData(form);
-    /* 蜜罐字段被填写 = 机器人，静默放行，避免灌入垃圾反馈 */
-    if (fd.get("_honey")) {
-      form.style.display = "none"; ok.style.display = "block";
-      ok.innerHTML = '<div class="big">✅</div>感谢反馈！我们会认真对待每一条建议。';
-      return;
-    }
-    fd.set("_captcha", "false");
-    fd.set("_subject", "碳市场分析平台 · 官网意见反馈");
-    fetch(ENDPOINT, { method: "POST", body: fd, headers: { "Accept": "application/json" } })
-      .then(function (r) {
-        if (r.ok) { form.style.display = "none"; ok.style.display = "block"; ok.innerHTML = '<div class="big">✅</div>感谢反馈！我们会认真对待每一条建议。'; }
-        else { alert("提交失败，请稍后重试；仍失败可点右下角「客服助手」留言，我们会尽快跟进。"); }
+    var msgEl = form.querySelector('[name=feedback]');
+    var ctEl = form.querySelector('[name=contact]');
+    var btn = form.querySelector('button[type=submit]');
+    var payload = { message: (msgEl ? msgEl.value : "").trim(), contact: (ctEl ? ctEl.value : "").trim() };
+    if (!payload.message) { alert("请先填写你的建议或问题。"); return; }
+    if (btn) { btn.disabled = true; btn.textContent = "提交中…"; }
+    fetch(ENDPOINT, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(payload)
+    })
+      .then(function (r) { return r.json().catch(function () { return {}; }).then(function (j) { return { ok: r.ok, j: j }; }); })
+      .then(function (res) {
+        if (res.ok && res.j && res.j.ok) {
+          form.style.display = "none"; ok.style.display = "block";
+          ok.innerHTML = '<div class="big">✅</div>感谢反馈，我们会认真查看！';
+        } else { throw new Error("failed"); }
       })
-      .catch(function () { alert("网络异常，请稍后重试；仍失败可点右下角「客服助手」留言，我们会尽快跟进。"); });
-  });
-})();
-</script>
-<script src="kb/faq.js"></script>
-<script src="chatbot.js" defer></script>
-<script>
-/* ============ 系统维护：临时停用所有下载（Windows / macOS） ============ */
-(function () {
-  var mask = null;
-  function ensureMask() {
-    if (mask) return mask;
-    mask = document.createElement('div');
-    mask.className = 'modal-mask';
-    mask.style.zIndex = 200;
-    mask.innerHTML =
-      '<div class="modal"><h3>系统维护中<button class="close" type="button" aria-label="关闭">×</button></h3>' +
-      '<div class="sub">下载功能临时关闭，给您带来不便敬请谅解</div>' +
-      '<p style="font-size:15px;line-height:1.8;margin:0;color:var(--text,#1f2937)">系统维护中，敬请期待</p></div>';
-    document.body.appendChild(mask);
-    mask.addEventListener('click', function (e) {
-      if (e.target === mask || (e.target.classList && e.target.classList.contains('close'))) hide();
-    });
-    return mask;
-  }
-  function show() { ensureMask().classList.add('show'); }
-  function hide() { if (mask) mask.classList.remove('show'); }
-  document.addEventListener('click', function (e) {
-    var a = e.target && e.target.closest ? e.target.closest('a') : null;
-    if (!a) return;
-    var href = a.getAttribute('href') || '';
-    var isDownload =
-      a.classList.contains('btn-dl') || a.classList.contains('nav-cta') ||
-      a.classList.contains('btn-mac') || a.classList.contains('os-cta') ||
-      a.classList.contains('cmp-btn') || a.classList.contains('mac-alt') ||
-      a.hasAttribute('data-dl') ||
-      href.indexOf('myqcloud.com') >= 0 ||
-      /\.(exe|dmg)(\?|#|$)/i.test(href);
-    if (isDownload) { e.preventDefault(); e.stopPropagation(); show(); }
+      .catch(function () {
+        if (btn) { btn.disabled = false; btn.textContent = "提交反馈"; }
+        alert("提交失败，请稍后重试，或用左侧「联系我们」的电话联系。");
+      });
   });
 })();
 </script>
