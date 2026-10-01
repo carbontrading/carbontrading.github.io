@@ -102,6 +102,9 @@ section{padding:64px 0;border-top:1px solid var(--line-2)}
 footer{border-top:1px solid var(--line-2);padding:40px 0 48px}
 .disc{margin-top:0;padding-top:0;border-top:none;font-size:13.5px;color:#EAF0F8;line-height:1.9}
 .disc b{color:#FFFFFF;font-weight:700}
+.disc ol{list-style:none;padding:0;margin:10px 0 0;counter-reset:discn}
+.disc ol li{position:relative;padding-left:2em;color:#EAF0F8;line-height:1.9}
+.disc ol li::before{content:counter(discn) ".";counter-increment:discn;position:absolute;left:0;color:#FFFFFF;font-weight:700}
 
 /* 浮动按钮：常见问题 / 意见反馈 / 联系我们 */
 .fab-wrap{position:fixed;left:22px;top:50%;transform:translateY(-50%);z-index:90;display:flex;flex-direction:column;overflow:hidden;
@@ -282,7 +285,12 @@ footer{border-top:1px solid var(--line-2);padding:40px 0 48px}
 <footer>
   <div class="wrap">
     <div class="disc">
-      <b>免责与合规声明：</b>本软件不内置、不转售、不主动分发任何交易所或第三方数据，也不替用户抓取数据；软件内数据由用户自行导入，导入数据的来源合规性与使用后果由用户自行负责。文中所有行情展示与预测结果均为学习研究之用，不构成任何投资、交易或履约决策建议。
+      <b>免责与合规声明：</b>
+      <ol>
+        <li>本软件不内置、不转售、不主动分发任何交易所或第三方数据，也不替用户抓取任何数据。</li>
+        <li>所有数据均由用户自行导入，导入数据的来源合规性、数据科学性与任何使用后果，均由用户自行负责。</li>
+        <li>本软件基于自身分析能力所展现的任何结果，均基于用户导入的数据，仅为学习研究之用，不构成任何投资、交易或履约决策建议。</li>
+      </ol>
     </div>
   </div>
 </footer>
