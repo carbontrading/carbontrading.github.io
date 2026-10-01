@@ -122,6 +122,12 @@ footer{border-top:1px solid var(--line-2);padding:40px 0 48px}
 .faq-item:first-of-type{border-top:none;padding-top:0}
 .faq-item h4{font-size:14px;font-weight:600;margin-bottom:6px}
 .faq-item p{font-size:12.5px;color:var(--muted);line-height:1.75}
+.faq-item .lead{font-size:12.5px;color:var(--muted);line-height:1.75;margin-bottom:6px}
+.faq-item .step-row{display:flex;align-items:center;gap:8px;margin:11px 0 5px}
+.faq-item .badge{flex:none;width:22px;height:22px;border-radius:50%;background:linear-gradient(135deg,var(--green),#0E9F6E);color:#04110B;font-weight:700;font-size:12px;display:flex;align-items:center;justify-content:center;font-family:var(--mono)}
+.faq-item .st{font-size:13px;font-weight:600;color:var(--text)}
+.faq-item .faq-img{width:100%;border-radius:10px;border:1px solid var(--line);margin:4px 0 2px;display:block;background:#000}
+.faq-item .tip{font-size:11.5px;color:var(--muted-2);margin-top:8px;line-height:1.65}
 .modal .contact-box{text-align:center;padding:12px 0 4px}
 .modal .contact-box .c-main{font-size:26px;font-weight:700;color:var(--green-2);font-family:var(--mono);letter-spacing:1px}
 .modal .contact-box .c-sub{font-size:13px;color:var(--muted);margin-top:6px}
@@ -319,6 +325,17 @@ footer{border-top:1px solid var(--line-2);padding:40px 0 48px}
 <div class="modal-mask" id="faqMask">
   <div class="modal">
     <h3>常见问题 <button class="close" id="faqClose" aria-label="关闭">×</button></h3>
+    <div class="faq-item">
+      <h4>下载时浏览器提示"通常不会下载此文件"或"无法验证是否安全"，怎么办？</h4>
+      <p class="lead">本软件暂未进行数字签名，Edge 浏览器和 Windows Defender SmartScreen 可能会拦截下载。请按以下 4 步操作，即可正常安装：</p>
+      <div class="step-row"><span class="badge">1</span><span class="st">在下载列表中点击文件右侧的「···」</span></div>
+      <div class="step-row" style="margin-top:0"><span class="badge">2</span><span class="st">在弹出菜单中选择「保留」</span></div>
+      <img class="faq-img" src="faq-download-step-1.png" alt="步骤1-2：点击更多操作并选择保留" loading="lazy">
+      <div class="step-row"><span class="badge">3</span><span class="st">在「打开前请确保信任」对话框中点击「显示简略信息」</span></div>
+      <div class="step-row" style="margin-top:0"><span class="badge">4</span><span class="st">点击「仍然保留」</span></div>
+      <img class="faq-img" src="faq-download-step-2.png" alt="步骤3-4：展开信息并选择仍然保留" loading="lazy">
+      <p class="tip">完成上述 4 步后，安装包即可正常打开运行。这是未签名软件的正常提示，并非文件本身有安全问题。</p>
+    </div>
     <div class="faq-item"><h4>怎么安装？</h4><p>下载安装包后双击运行，按提示完成安装；首次启动设置一个访问密码即可。</p></div>
     <div class="faq-item"><h4>试用有什么限制？</h4><p>免费试用 1 天，试用期内全部功能开放，可导入数据完整体验；试用期内不支持导出，导出需购买后使用。</p></div>
     <div class="faq-item"><h4>软件内有数据吗？</h4><p>没有。软件本体不含任何内置数据，也不会替您抓取数据；数据由您自行导入，首次体验可先下载页面上方的模拟数据包。</p></div>
