@@ -65,26 +65,30 @@ section{padding:64px 0;border-top:1px solid var(--line-2)}
 .s-h{text-align:center;font-size:25px;font-weight:700;letter-spacing:.5px}
 .s-sub{text-align:center;color:var(--muted);font-size:14px;margin:10px auto 40px;max-width:560px}
 
-/* pain cards */
-.pain-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
-.pain{position:relative;border:1px solid var(--line);border-radius:var(--radius);background:var(--bg-2);padding:22px 22px 20px;overflow:hidden}
-.pain::before{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:linear-gradient(180deg,rgba(148,163,184,.45),rgba(148,163,184,.06))}
-.pain .no{font-family:var(--mono);font-size:12px;color:var(--muted-2);letter-spacing:1px}
-.pain h3{font-size:15.5px;font-weight:600;margin:8px 0 7px}
-.pain p{font-size:13px;color:var(--muted);line-height:1.72}
-.pain.wide{grid-column:1 / -1}
-
-/* solution cards */
-.sol-grid{display:grid;gap:14px}
-.sol{display:flex;gap:18px;border:1px solid var(--line);border-radius:var(--radius);background:var(--bg-2);padding:22px 24px;transition:border-color .2s,transform .2s}
-.sol:hover{border-color:var(--line-strong);transform:translateY(-2px)}
-.sol .ic{width:46px;height:46px;border-radius:12px;background:var(--green-soft);color:var(--green-2);
-  display:flex;align-items:center;justify-content:center;font-size:20px;flex:none;border:1px solid var(--line-strong)}
-.sol .body{flex:1;min-width:0}
-.sol h3{font-size:15.5px;font-weight:600;margin-bottom:7px;display:flex;align-items:center;gap:9px;flex-wrap:wrap}
-.sol .tag{font-size:10.5px;font-weight:700;color:var(--green-2);border:1px solid var(--line-strong);border-radius:5px;padding:1px 7px}
-.sol p{font-size:13px;color:var(--muted);line-height:1.75}
-.sol p b{color:var(--text);font-weight:600}
+/* 难点 → 解法 一一对照 */
+.pair-list{display:flex;flex-direction:column;gap:16px}
+.pair{display:grid;grid-template-columns:1fr 52px 1fr;align-items:stretch}
+.pair .card{padding:22px 22px 20px;display:flex;flex-direction:column;gap:7px}
+.pair .pain-card{border:1px solid var(--line);background:var(--bg-2);border-right:none;border-top-right-radius:0;border-bottom-right-radius:0;position:relative}
+.pair .pain-card::before{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:linear-gradient(180deg,rgba(248,113,113,.55),rgba(248,113,113,.10))}
+.pair .sol-card{border:1px solid var(--line-strong);background:linear-gradient(180deg,rgba(16,185,129,.10),var(--bg-2));border-top-left-radius:0;border-bottom-left-radius:0}
+.pair .arrow{display:flex;align-items:center;justify-content:center;color:var(--green-2);font-size:20px;font-weight:700;border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:rgba(10,17,31,.5)}
+.pair .arrow svg{width:22px;height:22px}
+.pair .no{font-family:var(--mono);font-size:12px;color:var(--muted-2);letter-spacing:1px}
+.pair h3{font-size:15.5px;font-weight:600}
+.pair .pain-card h3{color:var(--text)}
+.pair .sol-card h3{display:flex;align-items:center;gap:9px;flex-wrap:wrap}
+.pair .sol-card .ic{width:30px;height:30px;border-radius:9px;background:var(--green-soft);color:var(--green-2);display:inline-flex;align-items:center;justify-content:center;font-size:16px;flex:none;border:1px solid var(--line-strong)}
+.pair p{font-size:13px;color:var(--muted);line-height:1.72}
+.pair .sol-card p b{color:var(--text);font-weight:600}
+@media (max-width:760px){
+  .pair{grid-template-columns:1fr}
+  .pair .pain-card{border-right:1px solid var(--line);border-bottom:none;border-radius:var(--radius) var(--radius) 0 0}
+  .pair .sol-card{border-radius:0 0 var(--radius) var(--radius)}
+  .pair .arrow{padding:7px 0;font-size:18px;border-left:1px solid var(--line);border-right:1px solid var(--line-strong)}
+  .pair .arrow svg{display:none}
+  .pair .arrow::after{content:"↓";color:var(--green-2)}
+}
 
 /* statement */
 .statement{border:1px solid var(--line-strong);border-radius:var(--radius);
@@ -142,8 +146,6 @@ footer{border-top:1px solid var(--line-2);padding:40px 0 48px}
 
 @media (max-width:820px){
   .hero h1{font-size:30px}
-  .pain-grid{grid-template-columns:1fr}
-  .sol{padding:20px}
   .btn-dl{width:100%;justify-content:center}
   .nav-links{display:none}
   .fab-wrap{left:12px}
@@ -157,8 +159,7 @@ footer{border-top:1px solid var(--line-2);padding:40px 0 48px}
   <div class="wrap nav-in">
     <a class="brand" href="#top"><span class="logo">碳</span>碳市场分析平台</a>
     <div class="nav-links">
-      <a href="#pain">研究难点</a>
-      <a href="#solve">它能做什么</a>
+      <a href="#mapping">难点与抓手</a>
       <a href="#notice">使用定位</a>
     </div>
   </div>
@@ -196,79 +197,69 @@ footer{border-top:1px solid var(--line-2);padding:40px 0 48px}
   </div>
 </header>
 
-<section id="pain">
+<section id="mapping">
   <div class="wrap">
-    <div class="s-label">01 / 研究难点</div>
-    <div class="s-h">研究碳市场，常被这几件事卡住</div>
-    <p class="s-sub">数据零散、走势难判、履约没底、方法难沉淀——这些困难在研究过程中反复出现。</p>
-    <div class="pain-grid">
-      <div class="pain">
-        <div class="no">01</div>
-        <h3>行情分散、口径不一</h3>
-        <p>CEA 与 CCER 的成交信息散落在不同来源、格式各异，手工整理既费时又容易出错，很难拼成一段连续、可比的时间序列。</p>
-      </div>
-      <div class="pain">
-        <div class="no">02</div>
-        <h3>走势看不透，把握说不清</h3>
-        <p>碳价同时受政策发布、履约周期、能源价格与市场情绪影响，单看 K 线难以判断短期方向，更难说清"有多大把握"。</p>
-      </div>
-      <div class="pain">
-        <div class="no">03</div>
-        <h3>履约节奏缺量化参考</h3>
-        <p>临近履约期，配额缺口多少、政策口径下的豁免怎么算、什么时候安排更合适，往往只能凭经验估计。</p>
-      </div>
-      <div class="pain">
-        <div class="no">04</div>
-        <h3>分析流程零散、方法难沉淀</h3>
-        <p>靠 Excel 手工做图、做表、写报告，一次做完下次还得重来，方法无法复用，研究结论也难以横向比较。</p>
-      </div>
-      <div class="pain wide">
-        <div class="no">05</div>
-        <h3>数据敏感，不敢上云</h3>
-        <p>行情与持仓数据较为敏感，放到云端不放心；放在本地，又担心文件被拷贝带走。</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section id="solve">
-  <div class="wrap">
-    <div class="s-label">02 / 它能做什么</div>
-    <div class="s-h">这些难题，它一件件帮你理顺</div>
-    <p class="s-sub">对应上面的每一项困难，软件都给出了可操作的抓手。</p>
-    <div class="sol-grid">
-      <div class="sol">
-        <div class="ic">📈</div>
-        <div class="body">
-          <h3>双市场行情，一屏看全 <span class="tag">对应 01</span></h3>
+    <div class="s-label">01 / 难点 → 抓手</div>
+    <div class="s-h">研究碳市场的难处，它一件件帮你理顺</div>
+    <p class="s-sub">左边是研究中常遇到的卡点，右边是软件对应的解决方式，一一对应。</p>
+    <div class="pair-list">
+      <div class="pair">
+        <div class="card pain-card">
+          <span class="no">01</span>
+          <h3>行情分散、口径不一</h3>
+          <p>CEA 与 CCER 的成交信息散落在不同来源、格式各异，手工整理既费时又容易出错，很难拼成一段连续、可比的时间序列。</p>
+        </div>
+        <div class="arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg></div>
+        <div class="card sol-card">
+          <h3><span class="ic">📈</span>双市场行情，一屏看全</h3>
           <p><b>CEA 与 CCER 量价同框</b>，K 线与常用技术指标开箱即用；数据统一格式入库后，可形成连续可比的时间序列，省去反复整理表格的功夫。</p>
         </div>
       </div>
-      <div class="sol">
-        <div class="ic">🔮</div>
-        <div class="body">
-          <h3>走势预测，给出把握区间 <span class="tag">对应 02</span></h3>
+      <div class="pair">
+        <div class="card pain-card">
+          <span class="no">02</span>
+          <h3>走势看不透，把握说不清</h3>
+          <p>碳价同时受政策发布、履约周期、能源价格与市场情绪影响，单看 K 线难以判断短期方向，更难说清"有多大把握"。</p>
+        </div>
+        <div class="arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg></div>
+        <div class="card sol-card">
+          <h3><span class="ic">🔮</span>走势预测，给出把握区间</h3>
           <p>不仅给出一条预测线，还给出<b>不确定区间</b>——区间越宽表示把握越小；每张图配通俗说明，便于判断与讨论，而不是只给一个"看着很准"的数字。</p>
         </div>
       </div>
-      <div class="sol">
-        <div class="ic">⏰</div>
-        <div class="body">
-          <h3>履约缺口校准与节奏参考 <span class="tag">对应 03</span></h3>
+      <div class="pair">
+        <div class="card pain-card">
+          <span class="no">03</span>
+          <h3>履约节奏缺量化参考</h3>
+          <p>临近履约期，配额缺口多少、政策口径下的豁免怎么算、什么时候安排更合适，往往只能凭经验估计。</p>
+        </div>
+        <div class="arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg></div>
+        <div class="card sol-card">
+          <h3><span class="ic">⏰</span>履约缺口校准与节奏参考</h3>
           <p>按制度口径（缺口率超过 20% 时可按规定补发配额至 80%）<b>自动显示豁免前后结果</b>，并结合履约窗口给出节奏参考，让分析有据可依。</p>
         </div>
       </div>
-      <div class="sol">
-        <div class="ic">🧮</div>
-        <div class="body">
-          <h3>从分析到报告的一条流程 <span class="tag">对应 04</span></h3>
+      <div class="pair">
+        <div class="card pain-card">
+          <span class="no">04</span>
+          <h3>分析流程零散、方法难沉淀</h3>
+          <p>靠 Excel 手工做图、做表、写报告，一次做完下次还得重来，方法无法复用，研究结论也难以横向比较。</p>
+        </div>
+        <div class="arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg></div>
+        <div class="card sol-card">
+          <h3><span class="ic">🧮</span>从分析到报告的一条流程</h3>
           <p>行情看板、数据分析、算法引擎、企业管理、报告生成等模块串成完整流程，<b>把零散的 Excel 手工变成可复用的分析步骤</b>，结论可留存、可对比。</p>
         </div>
       </div>
-      <div class="sol">
-        <div class="ic">🔒</div>
-        <div class="body">
-          <h3>本地加密，数据不出本机 <span class="tag">对应 05</span></h3>
+      <div class="pair">
+        <div class="card pain-card">
+          <span class="no">05</span>
+          <h3>数据敏感，不敢上云</h3>
+          <p>行情与持仓数据较为敏感，放到云端不放心；放在本地，又担心文件被拷贝带走。</p>
+        </div>
+        <div class="arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg></div>
+        <div class="card sol-card">
+          <h3><span class="ic">🔒</span>本地加密，数据不出本机</h3>
           <p>数据库<b>整库加密</b>、密钥与本机绑定，每次启动需密码；文件即使被拷贝到其他电脑，也无法解密读取，隐私不上云。</p>
         </div>
       </div>
